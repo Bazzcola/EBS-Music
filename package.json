@@ -50,6 +50,7 @@
     "node-sass": "^4.14.1",
     "normalize-sass": "^1.0.0",
     "prettier": "^2.0.5",
+    "rc-tooltip": "^4.2.1",
     "react-is": "^16.13.1"
   },
   "husky": {
@@ -59,7 +60,7 @@
   },
   "lint-staged": {
     "src/**/*.{js,jsx}": [
-      "eslint -c .eslintrc --fix --color"
+      "eslint -c .eslintrc --fix"
     ],
     "*.(js|html|css|)": [
       "npx prettier --write -c .prettierrc"

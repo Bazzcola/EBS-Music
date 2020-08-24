@@ -1,0 +1,47 @@
+.circle_button {
+  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  display: inline-block;
+  color: white;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  padding: 0px;
+}
+
+.circle_button_black {
+  background-color: #000000 !important;
+}
+
+.svg_play {
+  display: flex;
+  align-items: center;
+  width: 15px;
+  height: 15px;
+  color: white;
+  fill: currentColor;
+  stroke: currentColor;
+  stroke-width: 0;
+  vertical-align: top;
+  margin: 0 auto;
+  padding-left: 2px;
+  padding-top: 2px;
+}
+
+.svg_stop {
+  display: flex;
+  align-items: center;
+  width: 15px;
+  height: 15px;
+  color: white;
+  fill: currentColor;
+  stroke: currentColor;
+  stroke-width: 0;
+  vertical-align: top;
+  margin: 0 auto;
+  padding-left: 2px;
+  padding-top: 2px;
+}

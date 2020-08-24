@@ -1,0 +1,39 @@
+.big_button {
+  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  border: 0;
+  border-radius: 3px;
+  cursor: pointer;
+  display: inline-block;
+  line-height: 1;
+  color: white;
+  padding: 5px;
+  width: 120px;
+  height: 30px;
+}
+
+.big_button_pink {
+  background-color: #ef5466 !important;
+}
+
+.play_svg {
+  width: 15px;
+  height: 15px;
+  color: white;
+  fill: currentColor;
+  stroke: currentColor;
+  stroke-width: 0;
+  vertical-align: top;
+  margin-right: 5px;
+}
+
+.stop_svg {
+  width: 15px;
+  height: 15px;
+  color: white;
+  fill: currentColor;
+  stroke: currentColor;
+  stroke-width: 0;
+  vertical-align: top;
+  margin-right: 5px;
+}
