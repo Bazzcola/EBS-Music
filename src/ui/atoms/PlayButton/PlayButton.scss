@@ -1,0 +1,44 @@
+.play_button {
+    font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    border: 0;
+    border-radius: 50%;
+    cursor: pointer;
+    display: inline-block;
+    color: white;
+    min-width: 60px;
+    min-height: 60px;
+    text-align: center;
+    background: none;
+}
+
+.play_button:hover {
+    background: rgb(224, 224, 224);
+}
+
+.svg_playbtn {
+    display: flex;
+    align-items: center;
+    width: 28px;
+    height: 28px;
+    color: black;
+    fill: currentColor;
+    stroke: currentColor;
+    stroke-width: 0;
+    vertical-align: top;
+    margin: 0 auto;
+}
+
+.svg_stopbtn {
+    display: flex;
+    align-items: center;
+    width: 28px;
+    height: 28px;
+    color: black;
+    fill: currentColor;
+    stroke: currentColor;
+    stroke-width: 0;
+    vertical-align: top;
+    margin: 0 auto;
+
+}

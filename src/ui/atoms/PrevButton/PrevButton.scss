@@ -1,0 +1,30 @@
+.prev_button {
+    font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    border: 0;
+    border-radius: 50%;
+    cursor: pointer;
+    display: inline-block;
+    color: white;
+    min-width: 60px;
+    min-height: 60px;
+    text-align: center;
+    background: none;
+}
+
+.prev_button:hover {
+    background: rgb(224, 224, 224);
+}
+
+.svg_prevbtn {
+    display: flex;
+    align-items: center;
+    width: 20px;
+    height: 28px;
+    color: black;
+    fill: currentColor;
+    stroke: currentColor;
+    stroke-width: 0;
+    vertical-align: top;
+    margin: 0 auto;
+}

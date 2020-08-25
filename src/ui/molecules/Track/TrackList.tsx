@@ -22,21 +22,30 @@ export const TrackList = () => {
       time: '3:20'
     }
   ];
+
+  const typeButton = 'pink';
+  const typeCircleButton = 'black';
+  const classType = 'circle_button';
+
   return (
     <div className="container">
-      <Button />
       <div className="track_list">
+        <Button typeButton={typeButton} />
         <div className="track_list__title">
           <h3>#</h3>
-          <p className="track_text">TRACK</p>
-          <p>L.</p>
+          <div className="track_text__item">
+            <p className="track_text">TRACK</p>
+            <p>L.</p>
+          </div>
         </div>
         {item ? (
           item.map((item: { name: string; time: string }) => (
             <div className="track_item" key={Math.random()}>
-              <CircleButton />
-              <p>{item.name}</p>
-              <p>{item.time}</p>
+              <CircleButton classType={classType} type={typeCircleButton} />
+              <div className="date_item">
+                <p>{item.name}</p>
+                <p>{item.time}</p>
+              </div>
             </div>
           ))
         ) : (

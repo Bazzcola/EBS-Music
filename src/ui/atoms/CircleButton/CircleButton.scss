@@ -6,14 +6,19 @@
   cursor: pointer;
   display: inline-block;
   color: white;
-  width: 40px;
-  height: 40px;
+  min-width: 40px;
+  min-height: 40px;
   text-align: center;
   padding: 0px;
+  background: grey;
 }
 
 .circle_button_black {
   background-color: #000000 !important;
+}
+
+.circle_button_white {
+  background-color: #ffffff !important;
 }
 
 .svg_play {
@@ -27,8 +32,12 @@
   stroke-width: 0;
   vertical-align: top;
   margin: 0 auto;
-  padding-left: 2px;
+  padding-left: 3px;
   padding-top: 2px;
+}
+
+.svg_play_black {
+  color: black;
 }
 
 .svg_stop {
@@ -44,4 +53,8 @@
   margin: 0 auto;
   padding-left: 2px;
   padding-top: 2px;
+}
+
+.svg_stop_black {
+  color: black;
 }
