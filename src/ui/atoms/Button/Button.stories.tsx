@@ -7,12 +7,5 @@ export default {
 };
 
 export const Button1: React.FC<ButtonProps> = () => {
-  const [active, setActive] = useState<boolean>(false);
-  const changes = () => {
-    setActive(!active);
-  };
-  return <Button click={changes} active={active} />;
+  return <Button />;
 };
-// export const Button1 = ({ children }: any): React.ReactElement => (
-//   <Button>{children}</Button>
-// );

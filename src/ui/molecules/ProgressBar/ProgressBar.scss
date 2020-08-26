@@ -7,17 +7,24 @@
 
     .slider_track_input {
         width: 500px;
-        margin: 0px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
 
     .current_Time {
-        margin-right: 20px;
+        position: absolute;
+        left: 70px;
+        top: 5px;
         color: #92929d;
         font-size: 10px;
     }
 
     .total_Time {
-        margin-left: 20px;
+        position: absolute;
+        right: 70px;
+        top: 5px;
         color: #92929d;
         font-size: 10px;
     }
@@ -25,6 +32,7 @@
 
 .bar_wrapper {
     padding-top: 10px;
+    position: relative;
 }
 
 .song_text {
@@ -43,4 +51,115 @@
     font-weight: 400;
     font-family: Open Sans, Arial, sans-serif;
     margin-left: 5px;
+}
+
+.progress_line {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+
+
+
+
+input[type=range] {
+    width: 100%;
+    margin: 4.85px 0;
+    background-color: transparent;
+    -webkit-appearance: none;
+}
+
+input[type=range]:focus {
+    outline: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    background: #9b929d;
+    border: 0.2px solid #010101;
+    border-radius: 1.3px;
+    width: 100%;
+    height: 4.3px;
+    cursor: pointer;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    margin-top: -5.05px;
+    width: 14px;
+    height: 14px;
+    background: #ffffff;
+    border: 1px solid #92929d;
+    border-radius: 22px;
+    cursor: pointer;
+    -webkit-appearance: none;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #a79fa9;
+}
+
+input[type=range]::-moz-range-track {
+    background: #9b929d;
+    border: 0.2px solid #010101;
+    border-radius: 1.3px;
+    width: 100%;
+    height: 4.3px;
+    cursor: pointer;
+}
+
+input[type=range]::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    background: #ffffff;
+    border: 1px solid #92929d;
+    border-radius: 22px;
+    cursor: pointer;
+}
+
+input[type=range]::-ms-track {
+    background: transparent;
+    border-color: transparent;
+    border-width: 5.85px 0;
+    color: transparent;
+    width: 100%;
+    height: 4.3px;
+    cursor: pointer;
+}
+
+input[type=range]::-ms-fill-lower {
+    background: #8f8591;
+    border: 0.2px solid #010101;
+    border-radius: 2.6px;
+}
+
+input[type=range]::-ms-fill-upper {
+    background: #9b929d;
+    border: 0.2px solid #010101;
+    border-radius: 2.6px;
+}
+
+input[type=range]::-ms-thumb {
+    width: 14px;
+    height: 14px;
+    background: #ffffff;
+    border: 1px solid #92929d;
+    border-radius: 22px;
+    cursor: pointer;
+    margin-top: 0px;
+}
+
+input[type=range]:focus::-ms-fill-lower {
+    background: #9b929d;
+}
+
+input[type=range]:focus::-ms-fill-upper {
+    background: #a79fa9;
+}
+
+@supports (-ms-ime-align:auto) {
+    input[type=range] {
+        margin: 0;
+    }
 }
