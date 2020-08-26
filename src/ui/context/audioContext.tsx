@@ -1,22 +1,22 @@
 import React, { useState, useEffect, ReactNode } from 'react';
 
 export interface Props {
-  current: number | null;
-  durationTime: number | null;
-  setCurrent: React.Dispatch<React.SetStateAction<number | null>>;
-  setDurationTime: React.Dispatch<React.SetStateAction<number | null>>;
+  current: number;
+  durationTime: number;
+  setCurrent: React.Dispatch<React.SetStateAction<number>>;
+  setDurationTime: React.Dispatch<React.SetStateAction<number>>;
 }
 export interface Audio {
-  duration: number | null;
-  currentTime: number | null;
+  duration: number;
+  currentTime: number;
 }
 interface ProviderProps {
   children: ReactNode;
 }
 
 const defaultValue = {
-  current: null,
-  durationTime: null,
+  current: 0,
+  durationTime: 0,
   setCurrent: () => {},
   setDurationTime: () => {}
 };
@@ -24,8 +24,8 @@ export const AudioContext = React.createContext<Props>(defaultValue);
 
 export const ProviderAudioContext = (props: ProviderProps) => {
   const children = props.children;
-  const [current, setCurrent] = useState<number | null>(null);
-  const [durationTime, setDurationTime] = useState<number | null>(null);
+  const [current, setCurrent] = useState<number>(0);
+  const [durationTime, setDurationTime] = useState<number>(0);
 
   useEffect(() => {
     // setDurationTime(audio.duration);

@@ -12,11 +12,14 @@ export const ProgressBar = () => {
     const cur: any = audio.current;
     setCurrent(cur.currentTime);
     cur.ontimeupdate = (event: any) => {
-      let x = cur.currentTime;
-      setSpanCurrent(x.toFixed());
+      let seconds = cur.currentTime;
+      let allSeconds = cur.duration;
+      setDurationTime(allSeconds.toFixed());
+      setSpanCurrent(seconds.toFixed());
     };
   }, [spanCurrent]);
 
+  console.log(durationTime);
   console.log(spanCurrent);
 
   const Play = () => {
@@ -28,6 +31,20 @@ export const ProgressBar = () => {
     const x = audioPlay.pause();
   };
   const formatSecondsAsTime = (secs: number) => {
+    var hr = Math.floor(secs / 3600);
+    var min = Math.floor((secs - hr * 3600) / 60);
+    var sec = Math.floor(secs - hr * 3600 - min * 60);
+
+    if (min < 10) {
+      min = 0 + min;
+    }
+    if (sec < 10) {
+      sec = 0 + sec;
+    }
+
+    return min < 10 && sec < 10 ? '0' + min + ':' + '0' + sec : min + ':' + sec;
+  };
+  const formatSecondsAllTime = (secs: number) => {
     var hr = Math.floor(secs / 3600);
     var min = Math.floor((secs - hr * 3600) / 60);
     var sec = Math.floor(secs - hr * 3600 - min * 60);
@@ -63,7 +80,7 @@ export const ProgressBar = () => {
           min="0"
           max="30"
         />
-        <span className="total_Time"></span>
+        <span className="total_Time">{formatSecondsAllTime(durationTime)}</span>
       </div>
       <button onClick={Play}>PLay</button>
       <button onClick={Stop}>Stop</button>
