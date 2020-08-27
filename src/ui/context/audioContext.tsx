@@ -1,10 +1,12 @@
-import React, { useState, useEffect, ReactNode } from 'react';
+import React, { useState, ReactNode } from 'react';
 
 export interface Props {
-  current: number;
+  currentTimeSecond: number;
   durationTime: number;
-  setCurrent: React.Dispatch<React.SetStateAction<number>>;
+  clickedTime: number;
+  setCurrentTimeSecond: React.Dispatch<React.SetStateAction<number>>;
   setDurationTime: React.Dispatch<React.SetStateAction<number>>;
+  setClickedTime: React.Dispatch<React.SetStateAction<number>>;
 }
 export interface Audio {
   duration: number;
@@ -15,28 +17,28 @@ interface ProviderProps {
 }
 
 const defaultValue = {
-  current: 0,
+  currentTimeSecond: 0,
   durationTime: 0,
-  setCurrent: () => {},
-  setDurationTime: () => {}
+  clickedTime: 0,
+  setCurrentTimeSecond: () => {},
+  setDurationTime: () => {},
+  setClickedTime: () => {}
 };
 export const AudioContext = React.createContext<Props>(defaultValue);
 
 export const ProviderAudioContext = (props: ProviderProps) => {
   const children = props.children;
-  const [current, setCurrent] = useState<number>(0);
+  const [currentTimeSecond, setCurrentTimeSecond] = useState<number>(0);
   const [durationTime, setDurationTime] = useState<number>(0);
-
-  useEffect(() => {
-    // setDurationTime(audio.duration);
-    // setCurrentTime(audio.currentTime);
-  }, []);
+  const [clickedTime, setClickedTime] = useState<number>(0);
 
   return (
     <AudioContext.Provider
       value={{
-        current,
-        setCurrent,
+        clickedTime,
+        setClickedTime,
+        currentTimeSecond,
+        setCurrentTimeSecond,
         durationTime,
         setDurationTime
       }}

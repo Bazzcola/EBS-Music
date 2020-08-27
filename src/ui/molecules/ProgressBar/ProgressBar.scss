@@ -5,14 +5,6 @@
     height: 50px;
     box-sizing: border-box;
 
-    .slider_track_input {
-        width: 500px;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
-
     .current_Time {
         position: absolute;
         left: 70px;
@@ -30,9 +22,35 @@
     }
 }
 
-.bar_wrapper {
-    padding-top: 10px;
-    position: relative;
+.bar {
+    user-select: none;
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    .bar__time {
+        color: grey;
+        font-size: 16px;
+    }
+
+    .bar__progress {
+        flex: 1;
+        border-radius: 5px;
+        margin: 0 20px;
+        height: 10px;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+
+        .bar__progress__knob {
+            position: relative;
+            height: 16px;
+            width: 16px;
+            border: 1px solid grey;
+            border-radius: 50%;
+            background-color: white;
+        }
+    }
 }
 
 .song_text {
@@ -64,102 +82,4 @@
 
 
 
-
-input[type=range] {
-    width: 100%;
-    margin: 4.85px 0;
-    background-color: transparent;
-    -webkit-appearance: none;
-}
-
-input[type=range]:focus {
-    outline: none;
-}
-
-input[type=range]::-webkit-slider-runnable-track {
-    background: #9b929d;
-    border: 0.2px solid #010101;
-    border-radius: 1.3px;
-    width: 100%;
-    height: 4.3px;
-    cursor: pointer;
-}
-
-input[type=range]::-webkit-slider-thumb {
-    margin-top: -5.05px;
-    width: 14px;
-    height: 14px;
-    background: #ffffff;
-    border: 1px solid #92929d;
-    border-radius: 22px;
-    cursor: pointer;
-    -webkit-appearance: none;
-}
-
-input[type=range]:focus::-webkit-slider-runnable-track {
-    background: #a79fa9;
-}
-
-input[type=range]::-moz-range-track {
-    background: #9b929d;
-    border: 0.2px solid #010101;
-    border-radius: 1.3px;
-    width: 100%;
-    height: 4.3px;
-    cursor: pointer;
-}
-
-input[type=range]::-moz-range-thumb {
-    width: 14px;
-    height: 14px;
-    background: #ffffff;
-    border: 1px solid #92929d;
-    border-radius: 22px;
-    cursor: pointer;
-}
-
-input[type=range]::-ms-track {
-    background: transparent;
-    border-color: transparent;
-    border-width: 5.85px 0;
-    color: transparent;
-    width: 100%;
-    height: 4.3px;
-    cursor: pointer;
-}
-
-input[type=range]::-ms-fill-lower {
-    background: #8f8591;
-    border: 0.2px solid #010101;
-    border-radius: 2.6px;
-}
-
-input[type=range]::-ms-fill-upper {
-    background: #9b929d;
-    border: 0.2px solid #010101;
-    border-radius: 2.6px;
-}
-
-input[type=range]::-ms-thumb {
-    width: 14px;
-    height: 14px;
-    background: #ffffff;
-    border: 1px solid #92929d;
-    border-radius: 22px;
-    cursor: pointer;
-    margin-top: 0px;
-}
-
-input[type=range]:focus::-ms-fill-lower {
-    background: #9b929d;
-}
-
-input[type=range]:focus::-ms-fill-upper {
-    background: #a79fa9;
-}
-
-@supports (-ms-ime-align:auto) {
-    input[type=range] {
-        margin: 0;
-    }
-}
+// linear-gradient(to right, #00cc00 0%, #00ff99 100%);

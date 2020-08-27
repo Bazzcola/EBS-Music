@@ -1,34 +1,67 @@
-import React, { useState, useRef, useContext, useEffect } from 'react';
-import { AudioContext, Audio } from 'ui/context/audioContext';
+import React, { useRef, useContext, useEffect } from 'react';
+import { AudioContext } from 'ui/context/audioContext';
 import 'ui/molecules/ProgressBar/ProgressBar.scss';
 
 export const ProgressBar = () => {
-  const { current, setCurrent } = useContext(AudioContext);
+  const { currentTimeSecond, setCurrentTimeSecond } = useContext(AudioContext);
   const { durationTime, setDurationTime } = useContext(AudioContext);
-  const [spanCurrent, setSpanCurrent] = useState<number>(0);
+  const { clickedTime, setClickedTime } = useContext(AudioContext);
+
   const audio = useRef(null);
 
   useEffect(() => {
     const cur: any = audio.current;
-    setCurrent(cur.currentTime);
-    cur.ontimeupdate = (event: any) => {
+    cur.ontimeupdate = () => {
       let seconds = cur.currentTime;
+      setCurrentTimeSecond(seconds.toFixed());
+    };
+    cur.onloadedmetadata = () => {
       let allSeconds = cur.duration;
       setDurationTime(allSeconds.toFixed());
-      setSpanCurrent(seconds.toFixed());
     };
-  }, [spanCurrent]);
+    if (clickedTime && clickedTime !== currentTimeSecond) {
+      cur.currentTime = clickedTime;
+      setClickedTime(0);
+    }
+  }, [currentTimeSecond]);
 
   console.log(durationTime);
-  console.log(spanCurrent);
+  console.log(currentTimeSecond);
+  console.log(clickedTime);
+
+  const calcClickedTime = (e: { pageX: number }) => {
+    const clickPositionInPage = e.pageX;
+    const bar: any = document.querySelector('.bar__progress');
+    const barStart = bar.getBoundingClientRect().left + window.scrollX;
+    const barWidth = bar.offsetWidth;
+    const clickPositionInBar = clickPositionInPage - barStart;
+    const timePerPixel = durationTime / barWidth;
+    return timePerPixel * clickPositionInBar;
+  };
+
+  const handleTimeDrag = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    e.persist();
+    const onTimeUpdate = (time: number) => calcClickedTime(e);
+
+    const updateTimeOnMove = (eMove: { pageX: number }) => {
+      onTimeUpdate(calcClickedTime(eMove));
+      console.log(e.pageX);
+    };
+
+    document.addEventListener('mousemove', updateTimeOnMove);
+
+    document.addEventListener('mouseup', () => {
+      document.removeEventListener('mousemove', updateTimeOnMove);
+    });
+  };
 
   const Play = () => {
     const audioPlay: any = audio.current;
-    const x = audioPlay.play();
+    audioPlay.play();
   };
   const Stop = () => {
     const audioPlay: any = audio.current;
-    const x = audioPlay.pause();
+    audioPlay.pause();
   };
   const formatSecondsAsTime = (secs: number) => {
     var hr = Math.floor(secs / 3600);
@@ -42,7 +75,7 @@ export const ProgressBar = () => {
       sec = 0 + sec;
     }
 
-    return min < 10 && sec < 10 ? '0' + min + ':' + '0' + sec : min + ':' + sec;
+    return min < 10 && sec < 10 ? min + ':' + '0' + sec : min + ':' + sec;
   };
   const formatSecondsAllTime = (secs: number) => {
     var hr = Math.floor(secs / 3600);
@@ -56,11 +89,14 @@ export const ProgressBar = () => {
       sec = 0 + sec;
     }
 
-    return min < 10 && sec < 10 ? '0' + min + ':' + '0' + sec : min + ':' + sec;
+    return min + ':' + sec;
   };
+
+  const curPercentage = (currentTimeSecond / durationTime) * 100;
+
   return (
     <div className="progress_bar">
-      <audio controls id="audio" ref={audio}>
+      <audio controls preload="metadata" id="audio" ref={audio}>
         <source
           src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
           type="audio/mpeg"
@@ -70,17 +106,24 @@ export const ProgressBar = () => {
         <span className="song_group">ALABAMA</span>•
         <span className="song_name">Kyok</span>
       </div>
-      <div className="bar_wrapper">
-        <span className="current_Time">{formatSecondsAsTime(spanCurrent)}</span>
-        <div className="progress_line"></div>
-        <input
-          className="slider_track_input"
-          type="range"
-          step="0.1"
-          min="0"
-          max="30"
-        />
-        <span className="total_Time">{formatSecondsAllTime(durationTime)}</span>
+      <div className="bar">
+        <span className="bar__time">
+          {formatSecondsAsTime(currentTimeSecond)}
+        </span>
+        <div
+          className="bar__progress"
+          style={{
+            background: `linear-gradient(to right, #6fd44a ${curPercentage}%, grey 0)`
+          }}
+          onMouseDown={(e) => handleTimeDrag(e)}
+        >
+          <span
+            className="bar__progress__knob"
+            style={{ left: `${curPercentage - 2}%` }}
+          />
+        </div>
+
+        <span className="bar__time">{formatSecondsAllTime(durationTime)}</span>
       </div>
       <button onClick={Play}>PLay</button>
       <button onClick={Stop}>Stop</button>
