@@ -1,0 +1,15 @@
+.music_container{
+    display:flex;
+    justify-content: space-between;
+    padding: 20px 10px 10px 10px;
+    border-top:1px #d1d1d6 solid;
+    width: 900px;
+    .player_buttons_box{
+        display:flex;
+        align-items: center;
+    }
+    .control_buttons_box{
+        display:flex;
+        align-items: center;
+    }
+}

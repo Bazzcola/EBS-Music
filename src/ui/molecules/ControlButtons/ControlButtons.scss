@@ -1,0 +1,15 @@
+.control_bar{
+    display:flex;
+    align-items: center;
+    height:28px;
+    .control_buttons{
+        display:flex;
+        align-items: center;
+        border-right:1px #d1d1d6 solid;
+        padding-right:10px;
+        height:28px;
+    }
+    .next_queue{
+        margin-left:20px;
+    }
+}

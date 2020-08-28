@@ -6,6 +6,7 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "@types/react-router-dom": "^5.1.5",
     "eslint-config-airbnb": "^18.2.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -51,7 +52,8 @@
     "normalize-sass": "^1.0.0",
     "prettier": "^2.0.5",
     "rc-tooltip": "^4.2.1",
-    "react-is": "^16.13.1"
+    "react-is": "^16.13.1",
+    "react-router-dom": "^5.2.0"
   },
   "husky": {
     "hooks": {

@@ -1,14 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { MainLayout } from 'ui/templates/MainLayout/MainLayout';
 import './index.scss';
-import { ProgressBar } from 'ui/molecules/ProgressBar/ProgressBar';
-import { ProviderAudioContext } from 'ui/context/audioContext';
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <ProviderAudioContext>
-      <ProgressBar />
-    </ProviderAudioContext>
+    <MainLayout />
   </React.StrictMode>,
   document.getElementById('root')
 );

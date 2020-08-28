@@ -1,0 +1,11 @@
+.main_container{
+    margin:0 auto;
+    padding:0px 30px;
+    position:relative;
+    height:100vh;
+}   .music_bar__container{
+        position:absolute;
+        bottom:50px;
+        left:50%;
+        transform: translate(-50%, -50%);
+}
