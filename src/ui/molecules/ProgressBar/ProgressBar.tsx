@@ -1,4 +1,4 @@
-import React, { useRef, useContext, useEffect, useState } from 'react';
+import React, { useRef, useContext, useEffect } from 'react';
 import { AudioContext } from 'ui/context/audioContext';
 import 'ui/molecules/ProgressBar/ProgressBar.scss';
 
@@ -6,9 +6,10 @@ export const ProgressBar = () => {
   const { currentTimeSecond, setCurrentTimeSecond } = useContext(AudioContext);
   const { durationTime, setDurationTime } = useContext(AudioContext);
   const { clickedTime, setClickedTime } = useContext(AudioContext);
-  const [playing, setPlaying] = useState(false);
-  const audio = useRef(null);
+  
 
+  const audio = useRef(null);
+  
   useEffect(() => {
     const cur: any = audio.current;
     cur.ontimeupdate = () => {
@@ -29,34 +30,7 @@ export const ProgressBar = () => {
   // console.log(currentTimeSecond);
   // console.log(clickedTime);
 
-  // useEffect(() => {
-  //   const cur: any = audio.current;
-
-  //   const setAudioData = () => {
-  //     setDurationTime(cur.duration);
-  //     setCurrentTimeSecond(cur.currentTime);
-  //   }
-
-  //   const setAudioTime = () => setCurrentTimeSecond(cur.currentTime);
-
-  //   cur.addEventListener("loadeddata", setAudioData);
-
-  //   cur.addEventListener("timeupdate", setAudioTime);
-
-  //   playing ? cur.play() : cur.pause();
-
-  //   if (clickedTime && clickedTime !== currentTimeSecond) {
-  //     cur.currentTime = clickedTime;
-  //     setClickedTime(0);
-  //   } 
-
-  //   return () => {
-  //     cur.removeEventListener("loadeddata", setAudioData);
-  //     cur.removeEventListener("timeupdate", setAudioTime);
-  //   }
-  // },[]);
- 
-  const calcClickedTime = (e: { pageX: number }) => {
+  const calcClickedTime = (e: { pageX: number; }) => {
     const clickPositionInPage = e.pageX;
     const bar: any = document.querySelector('.bar__progress');
     const barStart = bar.getBoundingClientRect().left + window.scrollX;
@@ -65,24 +39,21 @@ export const ProgressBar = () => {
     const timePerPixel = durationTime / barWidth;
     const result = timePerPixel * clickPositionInBar;
     console.log(result.toFixed())
-    setClickedTime(result);
-    // return result.toFixed();
+    return result.toFixed();
   };
- 
-  // const handleTimeDrag = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-  //   e.persist();
-  //   const onTimeUpdate = (eMove: string) => calcClickedTime(e);
 
-  //   const updateTimeOnMove = (eMove: { pageX: number; }) => {
-  //     onTimeUpdate(calcClickedTime(eMove));
-  //   };
+  const onTimeUpdate = (time:any) => setClickedTime(time)
 
-  //   document.addEventListener('mousemove', updateTimeOnMove);
-
-  //   document.addEventListener('mouseup', () => {
-  //     document.removeEventListener('mousemove', updateTimeOnMove);
-  //   });
-  // };
+  const handleTimeDrag = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    e.persist();
+    onTimeUpdate(calcClickedTime(e));
+    const onMove = (eMove: { pageX: number; }) => onTimeUpdate(calcClickedTime(eMove))
+   
+    document.addEventListener('mousemove', onMove);
+    document.addEventListener('mouseup', () => {
+      document.removeEventListener('mousemove', onMove);
+    });
+  };
 
   const Play = () => {
     const audioPlay: any = audio.current;
@@ -144,7 +115,7 @@ export const ProgressBar = () => {
           style={{
             background: `linear-gradient(to right, #6fd44a ${curPercentage}%, grey 0)`
           }}
-          onMouseDown={(e) => calcClickedTime(e)}
+          onMouseDown={(e) => handleTimeDrag(e)}
         >
           <span
             className="bar__progress__knob"
