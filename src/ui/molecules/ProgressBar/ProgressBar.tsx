@@ -126,7 +126,7 @@ export const ProgressBar = () => {
 
   return (
     <div className="progress_bar">
-      <audio controls preload="metadata" id="audio" ref={audio}>
+      <audio controls preload="metadata" id="audio" ref={audio} className="audio_source">
         <source
           src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
           type="audio/mpeg"
@@ -154,7 +154,7 @@ export const ProgressBar = () => {
             className="bar__progress__knob"
             style={{ left: `${curPercentage - 2}%` }}
           />
-          <ReactTooltip id='bar_time' >{formatTooltiptime(barTooltip)}</ReactTooltip>
+          <ReactTooltip id='bar_time'>{formatTooltiptime(barTooltip)}</ReactTooltip>
         </div>
 
         <span className="bar__time">{formatSecondsAllTime(durationTime)}</span>
