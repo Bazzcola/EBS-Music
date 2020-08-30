@@ -5,6 +5,7 @@ import { PlayButton } from 'ui/atoms/PlayButton/PlayButton';
 import 'ui/molecules/PlayerButtons/PlayerButtons.scss';
 
 export const PlayerButtons = () => {
+  
   return (
     <div className="btn_box">
       <div className="btn_box__item">

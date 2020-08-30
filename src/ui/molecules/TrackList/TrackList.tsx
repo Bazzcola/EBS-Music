@@ -1,32 +1,15 @@
 import React from 'react';
 import { CircleButton } from 'ui/atoms/CircleButton/CircleButton';
 import { Button } from 'ui/atoms/Button/Button';
+import { Tracks } from 'ui/context/audioContext';
 import './TrackList.scss';
 
-export const TrackList = () => {
-  const item = [
-    {
-      name: 'Alabama',
-      time: '3:20'
-    },
-    {
-      name: 'Alabama',
-      time: '3:20'
-    },
-    {
-      name: 'Alabama',
-      time: '3:20'
-    },
-    {
-      name: 'Alabama',
-      time: '3:20'
-    }
-  ];
 
+export const TrackList = () => {
   const typeButton = 'pink';
   const typeCircleButton = 'black';
   const classType = 'circle_button';
-
+ 
   return (
     <div className="container">
       <div className="track_list">
@@ -38,22 +21,17 @@ export const TrackList = () => {
             <p>L.</p>
           </div>
         </div>
-        {item ? (
-          item.map((item: { name: string; time: string }) => (
-            <div className="track_item" key={Math.random()}>
+        {
+          Tracks.map((item: {id:number; title:string; duration:string}) => (
+            <div className="track_item" key={item.id}>
               <CircleButton classType={classType} type={typeCircleButton} />
               <div className="date_item">
-                <p>{item.name}</p>
-                <p>{item.time}</p>
+                <p>{item.title}</p>
+                <p>{item.duration}</p>
               </div>
             </div>
           ))
-        ) : (
-          <div className="track_item">
-            <p>Name</p>
-            <p>Time</p>
-          </div>
-        )}
+        }
       </div>
     </div>
   );

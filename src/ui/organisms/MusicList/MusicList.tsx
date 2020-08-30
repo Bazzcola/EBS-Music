@@ -1,7 +1,7 @@
 import React from 'react';
 import {TrackList} from 'ui/molecules/TrackList/TrackList';
-import 'ui/molecules/TrackList/TrackList';
 import 'ui/organisms/MusicList/MusicList.scss';
+
 export const MusicList = () => {
 
     return(

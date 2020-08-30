@@ -1,10 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useContext} from 'react';
+import { AudioContext } from 'ui/context/audioContext';
 import 'ui/atoms/PlayButton/PlayButton.scss';
 
 export const PlayButton = () => {
-  const [active, setActive] = useState<boolean>(false);
+  const [active, setActive] = useState<boolean>(true);
+  const {setPlaying} = useContext(AudioContext);
   const changes = () => {
     setActive(!active);
+    if(active) {
+        setPlaying(true);
+        console.log('play')
+    } else {  
+        setPlaying(false);
+        console.log('pause')
+    }
   };
   return (
     <button onClick={changes} className="play_button">

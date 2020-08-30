@@ -1,13 +1,14 @@
-import React, { useRef, useContext, useEffect } from 'react';
+import React, { useRef, useContext, useEffect, useState } from 'react';
 import { AudioContext } from 'ui/context/audioContext';
+import ReactTooltip from 'react-tooltip';
 import 'ui/molecules/ProgressBar/ProgressBar.scss';
 
 export const ProgressBar = () => {
   const { currentTimeSecond, setCurrentTimeSecond } = useContext(AudioContext);
   const { durationTime, setDurationTime } = useContext(AudioContext);
   const { clickedTime, setClickedTime } = useContext(AudioContext);
-  
-
+  const { playing } = useContext(AudioContext);  
+  const [barTooltip, setBarTooltip] = useState<number>(0)
   const audio = useRef(null);
   
   useEffect(() => {
@@ -20,11 +21,14 @@ export const ProgressBar = () => {
       let allSeconds = cur.duration;
       setDurationTime(allSeconds.toFixed());
     };
+    playing ? cur.play() : cur.pause();
+
     if (clickedTime && clickedTime !== currentTimeSecond) {
       cur.currentTime = clickedTime;
       setClickedTime(0);
     }
-  }, [currentTimeSecond, clickedTime]);
+    // eslint-disable-next-line
+  }, [currentTimeSecond, clickedTime, playing]);
 
   // console.log(durationTime);
   // console.log(currentTimeSecond);
@@ -38,32 +42,44 @@ export const ProgressBar = () => {
     const clickPositionInBar = clickPositionInPage - barStart;
     const timePerPixel = durationTime / barWidth;
     const result = timePerPixel * clickPositionInBar;
-    console.log(result.toFixed())
+    // console.log(result.toFixed())
     return result.toFixed();
   };
-
+  
   const onTimeUpdate = (time:any) => setClickedTime(time)
-
+ 
   const handleTimeDrag = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     e.persist();
     onTimeUpdate(calcClickedTime(e));
-    const onMove = (eMove: { pageX: number; }) => onTimeUpdate(calcClickedTime(eMove))
-   
+    const onMove = (eMove: { pageX: number; }) => onTimeUpdate(calcClickedTime(eMove));
+
     document.addEventListener('mousemove', onMove);
     document.addEventListener('mouseup', () => {
       document.removeEventListener('mousemove', onMove);
     });
   };
 
-  const Play = () => {
-    const audioPlay: any = audio.current;
-    audioPlay.play();
-  };
-  const Stop = () => {
-    const audioPlay: any = audio.current;
-    audioPlay.pause();
-  };
-  const formatSecondsAsTime = (secs: number) => {
+  const barTooltipLine = (time:any) => setBarTooltip(time)
+
+  const getTooltipTime = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    e.persist();
+    const onMoveTooltip = (eMove: { pageX: number; }) => barTooltipLine(calcClickedTime(eMove));
+
+    document.addEventListener('mousemove', onMoveTooltip);
+    document.addEventListener('mouseup', () => {
+      document.removeEventListener('mousemove', onMoveTooltip);
+    });
+  }
+
+  useEffect(() => {
+    if(barTooltip < 0) {
+      setBarTooltip(0)
+    }
+  },[barTooltip])
+
+  // console.log(barTooltip)
+
+  const formatTooltiptime = (secs: number) => {
     var hr = Math.floor(secs / 3600);
     var min = Math.floor((secs - hr * 3600) / 60);
     var sec = Math.floor(secs - hr * 3600 - min * 60);
@@ -75,6 +91,20 @@ export const ProgressBar = () => {
       sec = 0 + sec;
     }
 
+    return min + ':' + sec;
+  }
+  const formatSecondsAsTime = (secs: number) => {
+    var hr = Math.floor(secs / 3600);
+    var min = Math.floor((secs - hr * 3600) / 60);
+    var sec = Math.floor(secs - hr * 3600 - min * 60);
+
+    if (min < 10) {
+      min = 0 + min;
+    }
+    if (sec < 10) {
+      sec = 0 + sec;
+    }
+    // eslint-disable-next-line
     return min < 10 && sec < 10 ? min + ':' + '0' + sec : min + ':' + sec;
   };
   const formatSecondsAllTime = (secs: number) => {
@@ -111,22 +141,24 @@ export const ProgressBar = () => {
           {formatSecondsAsTime(currentTimeSecond)}
         </span>
         <div
+          data-tip=''
+          data-for='bar_time'
           className="bar__progress"
           style={{
             background: `linear-gradient(to right, #6fd44a ${curPercentage}%, grey 0)`
           }}
           onMouseDown={(e) => handleTimeDrag(e)}
+          onMouseMove={(e) => getTooltipTime(e)}
         >
           <span
             className="bar__progress__knob"
             style={{ left: `${curPercentage - 2}%` }}
           />
+          <ReactTooltip id='bar_time' >{formatTooltiptime(barTooltip)}</ReactTooltip>
         </div>
 
         <span className="bar__time">{formatSecondsAllTime(durationTime)}</span>
       </div>
-      <button onClick={Play}>PLay</button>
-      <button onClick={Stop}>Stop</button>
     </div>
   );
 };
