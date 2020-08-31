@@ -39,18 +39,25 @@
         flex: 1;
         border-radius: 5px;
         margin: 0 20px;
-        height: 10px;
+        height: 5px;
         display: flex;
         align-items: center;
         cursor: pointer;
 
         .bar__progress__knob {
+            display:none;
             position: relative;
-            height: 16px;
-            width: 16px;
+            height: 10px;
+            width: 10px;
             border: 1px solid grey;
             border-radius: 50%;
             background-color: white;
+        }
+    }
+    .bar__progress:hover{
+        height:8px;
+        .bar__progress__knob{
+            display:block;
         }
     }
 }

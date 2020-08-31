@@ -1,4 +1,5 @@
 import React,{useState} from 'react';
+import ReactTooltip from 'react-tooltip';
 import 'ui/atoms/ShuffleButton/ShuffleButton.scss';
 export type ButtonProps = {
     svg:string;
@@ -9,7 +10,10 @@ export const ShuffleButton = (props:ButtonProps) => {
     setActive(!active);
   };
     return (
+      <>
         <button
+            data-tip=''
+            data-for='shuffle'
             onClick={changes}
             className="shuffle_button"
         >
@@ -17,5 +21,7 @@ export const ShuffleButton = (props:ButtonProps) => {
           <path d={props.svg}></path>
         </svg>
     </button>
+    <ReactTooltip id='shuffle' overridePosition={()=>({left:634,top:0})}><span className="shuffle_tooltip">Turn on Shuffle</span></ReactTooltip>
+    </>
     )
 }

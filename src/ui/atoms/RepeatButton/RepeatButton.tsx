@@ -1,4 +1,5 @@
 import React,{useState} from 'react';
+import ReactTooltip from 'react-tooltip';
 import 'ui/atoms/RepeatButton/RepeatButton.scss';
 export type ButtonProps = {
     svg:string;
@@ -9,7 +10,10 @@ export const RepeatButton = (props:ButtonProps) => {
     setActive(!active);
   };
     return (
+      <>
         <button
+            data-tip=''
+            data-for='repeat'
             onClick={changes}
             className="repeat_button"
         >
@@ -17,5 +21,7 @@ export const RepeatButton = (props:ButtonProps) => {
           <path d={props.svg}></path>
         </svg>
     </button>
+    <ReactTooltip id='repeat' overridePosition={()=>({left:574,top:0})}><span className="repeat_tooltip">Repeat all tracks in list</span></ReactTooltip>
+    </>
     )
 }

@@ -2,13 +2,17 @@ import React, { useState, ReactNode} from 'react';
 
 export interface Props {
   playing: boolean;
+  volume:number;
   currentTimeSecond: number;
   durationTime: number;
   clickedTime: number;
+  currentVolume:number;
   setCurrentTimeSecond: React.Dispatch<React.SetStateAction<number>>;
   setDurationTime: React.Dispatch<React.SetStateAction<number>>;
   setClickedTime: React.Dispatch<React.SetStateAction<number>>;
   setPlaying:React.Dispatch<React.SetStateAction<boolean>>;
+  setVolume: React.Dispatch<React.SetStateAction<number>>;
+  setCurrentVolume:React.Dispatch<React.SetStateAction<number>>;
 }
 
 interface ProviderProps {
@@ -26,23 +30,33 @@ const defaultValue = {
   currentTimeSecond: 0,
   durationTime: 0,
   clickedTime: 0,
+  volume:0.5,
+  currentVolume:0,
   setCurrentTimeSecond: () => {},
   setDurationTime: () => {},
   setClickedTime: () => {},
-  setPlaying:() => {}
+  setPlaying:() => {},
+  setVolume:() => {},
+  setCurrentVolume:() => {}
 };
 export const AudioContext = React.createContext<Props>(defaultValue);
 
 export const ProviderAudioContext = (props: ProviderProps) => {
   const children = props.children;
+  const [volume, setVolume] = useState<number>(0.5);
   const [currentTimeSecond, setCurrentTimeSecond] = useState<number>(0);
   const [durationTime, setDurationTime] = useState<number>(0);
   const [clickedTime, setClickedTime] = useState<number>(0);
   const [playing, setPlaying] = useState<boolean>(false);
+  const [currentVolume, setCurrentVolume] = useState<number>(0);
 
   return (
     <AudioContext.Provider
       value={{
+        currentVolume,
+        setCurrentVolume,
+        volume,
+        setVolume,
         playing,
         setPlaying,
         clickedTime,

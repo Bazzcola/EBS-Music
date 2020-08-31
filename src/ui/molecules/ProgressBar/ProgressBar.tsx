@@ -7,10 +7,11 @@ export const ProgressBar = () => {
   const { currentTimeSecond, setCurrentTimeSecond } = useContext(AudioContext);
   const { durationTime, setDurationTime } = useContext(AudioContext);
   const { clickedTime, setClickedTime } = useContext(AudioContext);
-  const { playing } = useContext(AudioContext);  
+  const { playing } = useContext(AudioContext);
+  const { volume } = useContext(AudioContext);  
   const [barTooltip, setBarTooltip] = useState<number>(0)
   const audio = useRef(null);
-  
+
   useEffect(() => {
     const cur: any = audio.current;
     cur.ontimeupdate = () => {
@@ -21,14 +22,17 @@ export const ProgressBar = () => {
       let allSeconds = cur.duration;
       setDurationTime(allSeconds.toFixed());
     };
+    cur.volume = volume;
     playing ? cur.play() : cur.pause();
-
+    if(barTooltip < 0) {
+      setBarTooltip(0)
+    }
     if (clickedTime && clickedTime !== currentTimeSecond) {
       cur.currentTime = clickedTime;
       setClickedTime(0);
     }
     // eslint-disable-next-line
-  }, [currentTimeSecond, clickedTime, playing]);
+  }, [currentTimeSecond, clickedTime, playing, barTooltip, volume]);
 
   // console.log(durationTime);
   // console.log(currentTimeSecond);
@@ -71,14 +75,6 @@ export const ProgressBar = () => {
     });
   }
 
-  useEffect(() => {
-    if(barTooltip < 0) {
-      setBarTooltip(0)
-    }
-  },[barTooltip])
-
-  // console.log(barTooltip)
-
   const formatTooltiptime = (secs: number) => {
     var hr = Math.floor(secs / 3600);
     var min = Math.floor((secs - hr * 3600) / 60);
@@ -90,8 +86,8 @@ export const ProgressBar = () => {
     if (sec < 10) {
       sec = 0 + sec;
     }
-
-    return min + ':' + sec;
+    // eslint-disable-next-line
+    return min < 10 && sec < 10 ? min + ':' + '0' + sec : min + ':' + sec;
   }
   const formatSecondsAsTime = (secs: number) => {
     var hr = Math.floor(secs / 3600);
