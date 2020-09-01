@@ -17,7 +17,9 @@ export const MainLayout = () => {
                     <TrackList />
                 </Route>
                 <Route path="/:name">
-                    <Profile />
+                    <div className="profile_container">
+                        <Profile />
+                    </div>    
                 </Route>
             </Switch>
                 <div className="music_bar__container">

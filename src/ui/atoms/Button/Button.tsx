@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { AudioContext } from 'ui/context/audioContext';
 import './Button.scss';
 
 export type ButtonProps = {
@@ -7,9 +8,16 @@ export type ButtonProps = {
 
 export const Button: React.FC<ButtonProps> = (props) => {
   const [active, setActive] = useState<boolean>(false);
+  const {setPlaying} = useContext(AudioContext);
   const changes = () => {
     setActive(!active);
+    if(active) {
+        setPlaying(true);
+    } else {  
+        setPlaying(false);
+    }
   };
+  
   return (
     <button
       onClick={changes}

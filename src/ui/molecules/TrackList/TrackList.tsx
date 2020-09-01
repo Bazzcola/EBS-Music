@@ -2,8 +2,8 @@ import React from 'react';
 import { CircleButton } from 'ui/atoms/CircleButton/CircleButton';
 import { Button } from 'ui/atoms/Button/Button';
 import { Tracks } from 'ui/context/audioContext';
+import { Link } from 'react-router-dom';
 import './TrackList.scss';
-
 
 export const TrackList = () => {
   const typeButton = 'pink';
@@ -27,7 +27,7 @@ export const TrackList = () => {
               <div className="track_item" key={item.id}>
                 <CircleButton classType={classType} type={typeCircleButton} />
                 <div className="date_item">
-                  <p>{item.title}</p>
+                  <Link to={`/${item.title}`}><p>{item.title}</p></Link>
                   <p>{item.duration}</p>
                 </div>
               </div>

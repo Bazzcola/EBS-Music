@@ -1,31 +1,48 @@
-import React from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { CircleButton } from 'ui/atoms/CircleButton/CircleButton';
+import { useParams } from 'react-router-dom';
+import { AudioContext, Tracks } from 'ui/context/audioContext';
 import 'ui/molecules/Profile/Profile.scss';
+
+type song = {
+  id: number;
+  title: string;
+  name: string;
+  src: string;
+  duration: string;
+  img:string;
+}
 
 export const Profile = () => {
   const black = 'black';
   const white = 'white';
+  const { setList } = useContext(AudioContext);
+  const match = useParams<{ name: string }>();
+  const [track, setTrack] = useState<song>();
+  
+  useEffect(() => {
+    Tracks.filter((item:song) =>
+      item.title === match.name ? setTrack(item) : false
+    );
+    Tracks.filter((item:song) =>
+      item.title === match.name ? setList(item) : false
+    );
+    // eslint-disable-next-line
+  }, [match]);
+
 
   return (
     <div className="profile">
       <div
         className="profile_img"
-        style={{
-          backgroundImage:
-            'url(' +
-            'https://akket.com/wp-content/uploads/2019/11/World-of-Warcraft-Shadowlands-Blizzard.jpg' +
-            ')',
-          backgroundPosition: 'center',
-          backgroundSize: 'cover',
-          backgroundRepeat: 'no-repeat'
-        }}
       >
+        <img src={track?.img} alt=""/>
         <CircleButton classType={black} type={white} />
       </div>
       <div className="profile_text">
         <span>EXPLICIT</span>
-        <h2>DECADANCE 2</h2>
-        <p>Kyok</p>
+        <h2>{track?.title}</h2>
+        <p>{track?.name}</p>
       </div>
     </div>
   );
