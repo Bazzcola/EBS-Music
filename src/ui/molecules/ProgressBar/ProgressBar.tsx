@@ -10,8 +10,17 @@ export const ProgressBar = () => {
   const { playing } = useContext(AudioContext);
   const { volume } = useContext(AudioContext);  
   const [barTooltip, setBarTooltip] = useState<number>(0)
+  const [audioFiles, setAudioFiles] = useState<any>("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3");
   const audio = useRef(null);
+  const cur: any = audio.current;
+ 
 
+  const files = [{track:"https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", playing: false},
+  {track:"https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3", playing: false},
+  {track:"https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3", playing: false},
+  {track:"https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3", playing: false}
+  ]
+  console.log(files[0].playing)
   useEffect(() => {
     const cur: any = audio.current;
     cur.ontimeupdate = () => {
@@ -22,6 +31,7 @@ export const ProgressBar = () => {
       let allSeconds = cur.duration;
       setDurationTime(allSeconds.toFixed());
     };
+
     cur.volume = volume;
     playing ? cur.play() : cur.pause();
     if(barTooltip < 0) {
@@ -31,12 +41,38 @@ export const ProgressBar = () => {
       cur.currentTime = clickedTime;
       setClickedTime(0);
     }
+    if(currentTimeSecond === durationTime) {
+      
+      let songs = files.slice(0+1,1+1)
+      console.log('закончилась песня');
+      setAudioFiles(songs)
+    }
     // eslint-disable-next-line
   }, [currentTimeSecond, clickedTime, playing, barTooltip, volume]);
-
+  
+  
+  // console.log(audioFiles)
   // console.log(durationTime);
   // console.log(currentTimeSecond);
   // console.log(clickedTime);
+
+  // useEffect(() => {
+  //   let i = 0;
+  //   let y = 1;
+  //   const x = () => {
+  //     i++;
+  //     y++;
+  //     let songs = files.slice(i,y)
+  //     return setAudioFiles(songs)
+  //   }
+  //   if(currentTimeSecond === durationTime) {
+  //     cur.addEventListener('onended', x)
+  //       i++;
+  //       y++;
+  //       let songs = files.slice(i,y)
+  //       setAudioFiles(songs)
+  //   }
+  // },[currentTimeSecond])
 
   const calcClickedTime = (e: { pageX: number; }) => {
     const clickPositionInPage = e.pageX;
@@ -46,7 +82,6 @@ export const ProgressBar = () => {
     const clickPositionInBar = clickPositionInPage - barStart;
     const timePerPixel = durationTime / barWidth;
     const result = timePerPixel * clickPositionInBar;
-    // console.log(result.toFixed())
     return result.toFixed();
   };
   
@@ -94,12 +129,6 @@ export const ProgressBar = () => {
     var min = Math.floor((secs - hr * 3600) / 60);
     var sec = Math.floor(secs - hr * 3600 - min * 60);
 
-    if (min < 10) {
-      min = 0 + min;
-    }
-    if (sec < 10) {
-      sec = 0 + sec;
-    }
     // eslint-disable-next-line
     return min < 10 && sec < 10 ? min + ':' + '0' + sec : min + ':' + sec;
   };
@@ -107,27 +136,15 @@ export const ProgressBar = () => {
     var hr = Math.floor(secs / 3600);
     var min = Math.floor((secs - hr * 3600) / 60);
     var sec = Math.floor(secs - hr * 3600 - min * 60);
-
-    if (min < 10) {
-      min = 0 + min;
-    }
-    if (sec < 10) {
-      sec = 0 + sec;
-    }
-
-    return min + ':' + sec;
+    // eslint-disable-next-line
+    return min < 10 && sec < 10 ? min + ':' + '0' + sec : min + ':' + sec;
   };
 
   const curPercentage = (currentTimeSecond / durationTime) * 100;
-
+  
   return (
     <div className="progress_bar">
-      <audio controls preload="metadata" id="audio" ref={audio} className="audio_source">
-        <source
-          src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
-          type="audio/mpeg"
-        />
-      </audio>
+      <audio controls preload="metadata" autoPlay loop id="audio" ref={audio} className="audio_source" src={audioFiles}></audio>
       <div className="song_text">
         <span className="song_group">ALABAMA</span>•
         <span className="song_name">Kyok</span>

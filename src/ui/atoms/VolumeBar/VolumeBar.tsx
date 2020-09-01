@@ -15,7 +15,6 @@ export const VolumeBar = (props:active) => {
         setVolume(getClear2 / 10);
     }
     const inputValue = useRef(null);
-    console.log(props.active)
     return (
         <input type="range" step="1" min="0" max="10" ref={inputValue} onChange={getValue} defaultValue={5}></input>
    )
