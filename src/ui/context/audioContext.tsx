@@ -7,12 +7,10 @@ export interface Props {
   durationTime: number;
   clickedTime: number;
   currentVolume: number;
-  list: song | undefined;
   audioFiles: string | undefined;
   currentSong: boolean;
   setCurrentSong: React.Dispatch<React.SetStateAction<boolean>>;
   setAudioFiles: React.Dispatch<React.SetStateAction<string | undefined>>;
-  setList: React.Dispatch<React.SetStateAction<song | undefined>>;
   setCurrentTimeSecond: React.Dispatch<React.SetStateAction<number>>;
   setDurationTime: React.Dispatch<React.SetStateAction<number>>;
   setClickedTime: React.Dispatch<React.SetStateAction<number>>;
@@ -74,7 +72,6 @@ export const Tracks = [
 ];
 
 const defaultValue = {
-  list: undefined,
   playing: false,
   currentTimeSecond: 0,
   durationTime: 1,
@@ -90,7 +87,6 @@ const defaultValue = {
   setPlaying: () => {},
   setVolume: () => {},
   setCurrentVolume: () => {},
-  setList: () => {},
   setAudioFiles: () => {},
   counter: 0,
   setCounter: () => {}
@@ -100,7 +96,6 @@ export const AudioContext = React.createContext<Props>(defaultValue);
 export const ProviderAudioContext = (props: ProviderProps) => {
   const children = props.children;
   const [currentSong, setCurrentSong] = useState<boolean>(false);
-  const [list, setList] = useState<song | undefined>(undefined);
   const [volume, setVolume] = useState<number>(0.5);
   const [currentTimeSecond, setCurrentTimeSecond] = useState<number>(0);
   const [durationTime, setDurationTime] = useState<number>(1);
@@ -117,8 +112,6 @@ export const ProviderAudioContext = (props: ProviderProps) => {
         setCurrentSong,
         audioFiles,
         setAudioFiles,
-        list,
-        setList,
         currentVolume,
         setCurrentVolume,
         volume,

@@ -2,45 +2,18 @@ import React, { useRef, useContext, useEffect, useState } from 'react';
 import { AudioContext } from 'ui/context/audioContext';
 import ReactTooltip from 'react-tooltip';
 import 'ui/components/molecules/ProgressBar/ProgressBar.scss';
-import { Tracks } from 'ui/context/audioContext';
 
 export const ProgressBar = () => {
   const { currentTimeSecond, setCurrentTimeSecond } = useContext(AudioContext);
   const { durationTime, setDurationTime } = useContext(AudioContext);
   const { clickedTime, setClickedTime } = useContext(AudioContext);
-  const { playing } = useContext(AudioContext);
+  const { playing, setPlaying } = useContext(AudioContext);
   const { volume } = useContext(AudioContext);
-  const [barTooltip, setBarTooltip] = useState<number>(0);
   const { audioFiles, setAudioFiles } = useContext(AudioContext);
-  const [audioList, setAudioList] = useState<string>('');
   const { counter, setCounter } = useContext(AudioContext);
+  const [barTooltip, setBarTooltip] = useState<number>(0);
   const audio = useRef(null);
   const cur: any = audio.current;
-
-  // const files = [
-  //   {
-  //     id: 1,
-  //     track: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
-  //     playing: false
-  //   },
-  //   {
-  //     id: 2,
-  //     track: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
-  //     playing: false
-  //   },
-  //   {
-  //     id: 3,
-  //     track: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3',
-  //     playing: false
-  //   },
-  //   {
-  //     id: 4,
-  //     track: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3',
-  //     playing: false
-  //   }
-  // ];
-
-  // setAudioList(files[keys[0]]);
 
   useEffect(() => {
     const cur: any = audio.current;
@@ -54,7 +27,9 @@ export const ProgressBar = () => {
     };
 
     cur.volume = volume;
+
     playing ? cur.play() : cur.pause();
+
     if (barTooltip < 0) {
       setBarTooltip(0);
     }
@@ -65,19 +40,6 @@ export const ProgressBar = () => {
     // eslint-disable-next-line
   }, [currentTimeSecond, clickedTime, playing, barTooltip, volume]);
 
-  // useEffect(() => {
-  //   if (currentTimeSecond > 10 && currentTimeSecond === durationTime) {
-  //     console.log('закончилась песня');
-  //     let count = 0;
-  //     count++;
-  //     console.log(files[keys[count]]);
-  //     if (files[keys[count]] === files[keys[count]]) {
-  //       setAudioFiles(files[keys[count + 1]]);
-  //     }
-  //     setAudioFiles(files[keys[count]]);
-  //   }
-  // }, [currentTimeSecond]);
-
   const files = [
     'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
     'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
@@ -87,10 +49,11 @@ export const ProgressBar = () => {
 
   let keys: any = Object.keys(files);
 
-  const test = () => {
+  const Next = async () => {
     if (currentTimeSecond > 10 && currentTimeSecond === durationTime) {
       console.log('закончилась песня');
       if (counter === files.length - 1) {
+        await cur.play();
         setCounter(0);
         setAudioFiles(files[keys[0]]);
       } else {
@@ -173,14 +136,13 @@ export const ProgressBar = () => {
   return (
     <div className="progress_bar">
       <audio
-        controls
-        preload="metadata"
         autoPlay
+        preload="metadata"
         id="audio"
         ref={audio}
         className="audio_source"
         src={audioFiles}
-        onEnded={test}
+        onEnded={Next}
       ></audio>
       <div className="song_text">
         <span className="song_group">ALABAMA</span>•

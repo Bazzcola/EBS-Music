@@ -1,23 +1,26 @@
-.queue_box{
-    width:100px;
-    position:relative;
+.queue_box {
+    width: 100px;
+    position: relative;
     border-radius: 12px;
-    padding:8px 12px 8px 8px;
+    padding: 8px 12px 8px 8px;
     cursor: pointer;
-    .queue_image{
-        width:28px;
-        height:28px;
+
+    .queue_image {
+        width: 28px;
+        height: 28px;
         box-sizing: border-box;
         border-radius: 3px;
     }
-    span{
-        position:absolute;
+
+    span {
+        position: absolute;
         top: 15px;
         right: 30px;
         font-size: 13px;
         font-family: Open Sans, Arial, sans-serif;
     }
 }
-.queue_box:hover{
-    background:#d1d1d6;
+
+.queue_box:hover {
+    background: #d1d1d6;
 }

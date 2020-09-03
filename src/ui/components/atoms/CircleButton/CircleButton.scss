@@ -54,3 +54,16 @@
 .svg_stop_black {
   color: black;
 }
+
+.circle_button_hover {
+  background-image: url("http://cdns-files.dzcdn.net/cache/slash/images/common/animated/equalizer/12x12/inverse.1ed354e01b9e97207f6ac710e6c23eaa.gif");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.circle_button_hover:hover {
+  background-image: url("https://i.ibb.co/WkFhTyw/pause.png");
+  background-size: cover;
+  z-index: 3;
+  background-color: black;
+}
