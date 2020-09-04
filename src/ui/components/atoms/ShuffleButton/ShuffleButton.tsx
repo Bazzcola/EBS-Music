@@ -1,14 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import ReactTooltip from 'react-tooltip';
+import { AudioContext } from 'ui/context/audioContext';
 import './ShuffleButton.scss';
 export type ButtonProps = {
   svg: string;
 };
 export const ShuffleButton = (props: ButtonProps) => {
   const [active, setActive] = useState<boolean>(false);
+  const { setShuffle, currentTimeSecond } = useContext(AudioContext);
   const changes = () => {
     setActive(!active);
   };
+  useEffect(() => {
+    if (active) {
+      setShuffle(true);
+    } else {
+      setShuffle(false);
+    }
+  }, [active, currentTimeSecond]);
   return (
     <>
       <button
@@ -26,9 +35,11 @@ export const ShuffleButton = (props: ButtonProps) => {
       </button>
       <ReactTooltip
         id="shuffle"
-        overridePosition={() => ({ left: 634, top: 0 })}
+        overridePosition={() => ({ left: 640, top: 0 })}
       >
-        <span className="shuffle_tooltip">Turn on Shuffle</span>
+        <span className="shuffle_tooltip">
+          {!active ? 'Turn on Shuffle' : 'Turn off Shuffle'}
+        </span>
       </ReactTooltip>
     </>
   );

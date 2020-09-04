@@ -9,6 +9,12 @@ export interface Props {
   currentVolume: number;
   audioFiles: string | undefined;
   currentSong: boolean;
+  shuffle: boolean;
+  repeatOne: boolean;
+  repeatAll: boolean;
+  setShuffle: React.Dispatch<React.SetStateAction<boolean>>;
+  setRepeatOne: React.Dispatch<React.SetStateAction<boolean>>;
+  setRepeatAll: React.Dispatch<React.SetStateAction<boolean>>;
   setCurrentSong: React.Dispatch<React.SetStateAction<boolean>>;
   setAudioFiles: React.Dispatch<React.SetStateAction<string | undefined>>;
   setCurrentTimeSecond: React.Dispatch<React.SetStateAction<number>>;
@@ -68,10 +74,67 @@ export const Tracks = [
     duration: '6:15',
     img:
       'https://i.pinimg.com/originals/25/68/bb/2568bbbcece75bf9a94da355beb02306.jpg'
+  },
+  {
+    id: 5,
+    title: 'Track5',
+    name: 'Music5',
+    src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3',
+    duration: '6:15',
+    img:
+      'https://i.pinimg.com/originals/25/68/bb/2568bbbcece75bf9a94da355beb02306.jpg'
+  },
+  {
+    id: 6,
+    title: 'Track6',
+    name: 'Music6',
+    src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3',
+    duration: '6:15',
+    img:
+      'https://i.pinimg.com/originals/25/68/bb/2568bbbcece75bf9a94da355beb02306.jpg'
+  },
+  {
+    id: 7,
+    title: 'Track7',
+    name: 'Music7',
+    src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3',
+    duration: '6:15',
+    img:
+      'https://i.pinimg.com/originals/25/68/bb/2568bbbcece75bf9a94da355beb02306.jpg'
+  },
+  {
+    id: 8,
+    title: 'Track8',
+    name: 'Music8',
+    src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3',
+    duration: '6:15',
+    img:
+      'https://i.pinimg.com/originals/25/68/bb/2568bbbcece75bf9a94da355beb02306.jpg'
+  },
+  {
+    id: 9,
+    title: 'Track9',
+    name: 'Music9',
+    src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3',
+    duration: '6:15',
+    img:
+      'https://i.pinimg.com/originals/25/68/bb/2568bbbcece75bf9a94da355beb02306.jpg'
+  },
+  {
+    id: 10,
+    title: 'Track10',
+    name: 'Music10',
+    src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3',
+    duration: '6:15',
+    img:
+      'https://i.pinimg.com/originals/25/68/bb/2568bbbcece75bf9a94da355beb02306.jpg'
   }
 ];
 
 const defaultValue = {
+  shuffle: false,
+  repeatOne: false,
+  repeatAll: false,
   playing: false,
   currentTimeSecond: 0,
   durationTime: 1,
@@ -80,6 +143,7 @@ const defaultValue = {
   currentVolume: 0,
   audioFiles: '',
   currentSong: false,
+  counter: 0,
   setCurrentSong: () => {},
   setCurrentTimeSecond: () => {},
   setDurationTime: () => {},
@@ -88,13 +152,18 @@ const defaultValue = {
   setVolume: () => {},
   setCurrentVolume: () => {},
   setAudioFiles: () => {},
-  counter: 0,
+  setShuffle: () => {},
+  setRepeatAll: () => {},
+  setRepeatOne: () => {},
   setCounter: () => {}
 };
 export const AudioContext = React.createContext<Props>(defaultValue);
 
 export const ProviderAudioContext = (props: ProviderProps) => {
   const children = props.children;
+  const [shuffle, setShuffle] = useState<boolean>(false);
+  const [repeatOne, setRepeatOne] = useState<boolean>(false);
+  const [repeatAll, setRepeatAll] = useState<boolean>(false);
   const [currentSong, setCurrentSong] = useState<boolean>(false);
   const [volume, setVolume] = useState<number>(0.5);
   const [currentTimeSecond, setCurrentTimeSecond] = useState<number>(0);
@@ -108,6 +177,12 @@ export const ProviderAudioContext = (props: ProviderProps) => {
   return (
     <AudioContext.Provider
       value={{
+        shuffle,
+        setShuffle,
+        repeatAll,
+        setRepeatAll,
+        repeatOne,
+        setRepeatOne,
         currentSong,
         setCurrentSong,
         audioFiles,

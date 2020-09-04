@@ -13,8 +13,6 @@ type song = {
 };
 
 export const Profile = () => {
-  const black = 'black';
-  const white = 'white';
   const match = useParams<{ name: string }>();
   const [track, setTrack] = useState<song>();
   const [active, setActive] = useState<boolean>(false);

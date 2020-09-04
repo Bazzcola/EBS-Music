@@ -1,45 +1,54 @@
-.repeat_button{
-    font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-weight: 700;
-    border: 0;
-    border-radius: 50%;
-    cursor: pointer;
-    display: inline-block;
-    color: white;
-    min-width: 40px;
-    min-height: 40px;
-    text-align: center;
-    padding: 0px;
-    background: white;
-  }  
-    .svg_repeat {
-      display: flex;
-      align-items: center;
-      width: 15px;
-      color: black;
-      fill: currentColor;
-      stroke: currentColor;
-      stroke-width: 0;
-      vertical-align: top;
-      margin: 0 auto;
-      color:black;
-    }
-    
-    .svg_repeat_active {
-      color:#ef5466;
-      display: flex;
-      align-items: center;
-      width: 15px;
-      height: 15px;
-      fill: currentColor;
-      stroke: currentColor;
-      stroke-width: 0;
-      vertical-align: top;
-      margin: 0 auto;
-    }
-  .repeat_button:hover{
-      background:#d1d1d6;
-  }
-.repeat_tooltip{
-  color:white;
+.repeat_button {
+  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  display: inline-block;
+  color: white;
+  min-width: 40px;
+  min-height: 40px;
+  text-align: center;
+  padding: 0px;
+  background: white;
+}
+
+.svg_repeat {
+  display: flex;
+  align-items: center;
+  width: 15px;
+  height: 15px;
+  color: black;
+  fill: currentColor;
+  stroke: currentColor;
+  stroke-width: 0;
+  vertical-align: top;
+  margin: 0 auto;
+}
+
+.svg_repeat_active {
+  color: #ef5466;
+  display: flex;
+  align-items: center;
+  width: 15px;
+  height: 15px;
+  fill: currentColor;
+  stroke: currentColor;
+  stroke-width: 0;
+  vertical-align: top;
+  margin: 0 auto;
+}
+
+.repeat_button:hover {
+  background: #d1d1d6;
+}
+
+.repeat_tooltip {
+  color: white;
+}
+
+.switch_text {
+  width: 126px !important;
+  font-size: 11px;
+  text-align: center;
 }

@@ -1,19 +1,37 @@
 import React, { useRef, useContext, useEffect, useState } from 'react';
-import { AudioContext } from 'ui/context/audioContext';
+import { AudioContext, Tracks, song } from 'ui/context/audioContext';
 import ReactTooltip from 'react-tooltip';
 import 'ui/components/molecules/ProgressBar/ProgressBar.scss';
 
 export const ProgressBar = () => {
-  const { currentTimeSecond, setCurrentTimeSecond } = useContext(AudioContext);
-  const { durationTime, setDurationTime } = useContext(AudioContext);
-  const { clickedTime, setClickedTime } = useContext(AudioContext);
-  const { playing, setPlaying } = useContext(AudioContext);
-  const { volume } = useContext(AudioContext);
-  const { audioFiles, setAudioFiles } = useContext(AudioContext);
-  const { counter, setCounter } = useContext(AudioContext);
+  const {
+    currentTimeSecond,
+    setCurrentTimeSecond,
+    durationTime,
+    setDurationTime,
+    clickedTime,
+    setClickedTime,
+    playing,
+    setPlaying,
+    volume,
+    audioFiles,
+    setAudioFiles,
+    counter,
+    setCounter,
+    shuffle,
+    repeatOne,
+    repeatAll
+  } = useContext(AudioContext);
   const [barTooltip, setBarTooltip] = useState<number>(0);
+  const [files, setFiles] = useState<string[]>(['']);
+  const [random, setRandom] = useState<number>(1);
+
   const audio = useRef(null);
   const cur: any = audio.current;
+
+  useEffect(() => {
+    setFiles(Tracks.map((item: song) => item.src));
+  }, []);
 
   useEffect(() => {
     const cur: any = audio.current;
@@ -40,25 +58,35 @@ export const ProgressBar = () => {
     // eslint-disable-next-line
   }, [currentTimeSecond, clickedTime, playing, barTooltip, volume]);
 
-  const files = [
-    'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
-    'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
-    'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3',
-    'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3'
-  ];
+  useEffect(() => {
+    if (shuffle === true) {
+      setRandom(Math.floor(Math.random() * 9));
+    }
+    if (shuffle === false) {
+      setRandom(1);
+    }
+  }, [shuffle, currentTimeSecond]);
 
   let keys: any = Object.keys(files);
 
   const Next = async () => {
     if (currentTimeSecond > 10 && currentTimeSecond === durationTime) {
       console.log('закончилась песня');
-      if (counter === files.length - 1) {
-        await cur.play();
-        setCounter(0);
-        setAudioFiles(files[keys[0]]);
+      if (repeatAll) {
+        if (counter === files.length - 1) {
+          await cur.play();
+          setCounter(0);
+          setAudioFiles(files[keys[0]]);
+        } else {
+          setCounter((count) => count + random);
+          setAudioFiles(files[keys[counter + 1]]);
+        }
+        if (counter > files.length - 1) {
+          setCounter(0);
+          setAudioFiles(files[keys[0]]);
+        }
       } else {
-        setCounter((count) => count + 1);
-        setAudioFiles(files[keys[counter + 1]]);
+        setPlaying(false);
       }
     }
   };
@@ -136,6 +164,7 @@ export const ProgressBar = () => {
   return (
     <div className="progress_bar">
       <audio
+        loop={repeatOne}
         autoPlay
         preload="metadata"
         id="audio"
@@ -171,7 +200,11 @@ export const ProgressBar = () => {
           </ReactTooltip>
         </div>
 
-        <span className="bar__time">{formatSecondsAllTime(durationTime)}</span>
+        <span className="bar__time">
+          {playing || durationTime > 1
+            ? formatSecondsAllTime(durationTime)
+            : '0:00'}
+        </span>
       </div>
     </div>
   );

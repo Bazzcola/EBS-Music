@@ -3,7 +3,7 @@ import { AudioContext } from 'ui/context/audioContext';
 import 'ui/components/atoms/VolumeBar/VolumeBar.scss';
 
 type active = {
-  active: boolean;
+  active?: boolean;
 };
 export const VolumeBar = (props: active) => {
   const { setVolume } = useContext(AudioContext);
