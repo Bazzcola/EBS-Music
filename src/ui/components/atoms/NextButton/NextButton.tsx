@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { AudioContext } from 'ui/context/audioContext';
+import { AudioContext, song } from 'ui/context/audioContext';
 import { Tracks } from 'ui/context/audioContext';
 import './NextButton.scss';
 
@@ -10,12 +10,12 @@ export const NextButton = () => {
   );
 
   useEffect(() => {
-    setFiles(Tracks.map((item: any) => item.src));
+    setFiles(Tracks.map((item: song) => item.src));
   }, []);
 
   let keys: any = Object.keys(files);
 
-  const nextSong = (e: any) => {
+  const nextSong = (e: { preventDefault: () => void }) => {
     e.preventDefault();
     if (counter === files.length - 1) {
       setCounter(0);

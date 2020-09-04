@@ -6,4 +6,4 @@ export default {
   component: TrackList
 };
 
-export const Track: React.FC<any> = () => <TrackList />;
+export const Track = () => <TrackList />;
