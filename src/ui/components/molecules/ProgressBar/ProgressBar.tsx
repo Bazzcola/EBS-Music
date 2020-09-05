@@ -25,16 +25,23 @@ export const ProgressBar = () => {
   const [barTooltip, setBarTooltip] = useState<number>(0);
   const [files, setFiles] = useState<string[]>(['']);
   const [random, setRandom] = useState<number>(1);
-
-  const audio = useRef(null);
-  const cur: any = audio.current;
+  const [currentData, setCurrentData] = useState<song>();
+  const [prevSong, setPrevSong] = useState<number>();
+  const audio = useRef<any>(null);
+  const cur = audio.current;
 
   useEffect(() => {
     setFiles(Tracks.map((item: song) => item.src));
   }, []);
 
   useEffect(() => {
-    const cur: any = audio.current;
+    Tracks.filter((item: song) =>
+      item.src === audioFiles ? setCurrentData(item) : false
+    );
+  },[currentTimeSecond]);
+
+  useEffect(() => {
+    const cur = audio.current;
     cur.ontimeupdate = () => {
       let seconds = cur.currentTime;
       setCurrentTimeSecond(seconds.toFixed());
@@ -59,35 +66,45 @@ export const ProgressBar = () => {
   }, [currentTimeSecond, clickedTime, playing, barTooltip, volume]);
 
   useEffect(() => {
-    if (shuffle === true) {
-      setRandom(Math.floor(Math.random() * 9));
-    }
-    if (shuffle === false) {
-      setRandom(1);
-    }
-  }, [shuffle, currentTimeSecond]);
+
+  }, [shuffle]);
 
   let keys: any = Object.keys(files);
 
   const Next = async () => {
     if (currentTimeSecond > 10 && currentTimeSecond === durationTime) {
       console.log('закончилась песня');
-      if (repeatAll) {
+      if (repeatAll && shuffle === false) {
         if (counter === files.length - 1) {
           await cur.play();
           setCounter(0);
           setAudioFiles(files[keys[0]]);
         } else {
-          setCounter((count) => count + random);
+          await cur.play();
+          console.log('нормально')
+          setCounter((count) => count + 1);
           setAudioFiles(files[keys[counter + 1]]);
+          setPrevSong(counter + 1);
         }
-        if (counter > files.length - 1) {
-          setCounter(0);
-          setAudioFiles(files[keys[0]]);
+      } else if(repeatAll && shuffle === true) {
+        if(random === prevSong) {
+          await cur.play();
+          setRandom(Math.floor(Math.random() * 8))
+          setCounter(random)
+          setAudioFiles(files[keys[random + 1]])
+        } else {
+          await cur.play();
+          setRandom(Math.floor(Math.random() * 9))
+          setCounter(random)
+          console.log('шафл' + random)
+          setAudioFiles(files[keys[random]])
+          setPrevSong(random);
         }
+        
       } else {
         setPlaying(false);
       }
+      
     }
   };
 
@@ -174,8 +191,7 @@ export const ProgressBar = () => {
         onEnded={Next}
       ></audio>
       <div className="song_text">
-        <span className="song_group">ALABAMA</span>•
-        <span className="song_name">Kyok</span>
+        <span className="song_group">{currentData?.title} {currentData ? '•' : ''}</span><span className="song_name">{currentData?.name}</span>
       </div>
       <div className="bar">
         <span className="bar__time">

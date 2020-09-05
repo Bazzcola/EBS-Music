@@ -2,13 +2,22 @@
     margin:0 auto;
     padding:0px 30px;
     position:relative;
-    height:100vh;
+    height:100%;
 }   .music_bar__container{
         position:absolute;
-        bottom:50px;
+        bottom: -200px;
         left:50%;
         transform: translate(-50%, -50%);
 }
 .profile_container{
     padding-top: 50px;
+    height:620px;
 }
+.nav-links {
+    display: flex;
+    justify-content: center;
+    padding: 0 25px;
+    height: 56px;
+    align-items: center;
+    border-bottom: 1px solid #eaeaea;
+  }

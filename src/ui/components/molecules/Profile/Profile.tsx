@@ -16,7 +16,7 @@ export const Profile = () => {
   const match = useParams<{ name: string }>();
   const [track, setTrack] = useState<song>();
   const [active, setActive] = useState<boolean>(false);
-  const { playing, setPlaying, setAudioFiles } = useContext(AudioContext);
+  const { playing, setPlaying, setAudioFiles, setProfile } = useContext(AudioContext);
 
   const changes = () => {
     setActive(!active);
@@ -26,6 +26,15 @@ export const Profile = () => {
       setPlaying(false);
     }
   };
+
+  useEffect(() => {
+    if(match.name.length > 2){
+      setProfile(true);
+    }
+    if(match.name.length === 0){
+      setProfile(false);
+    }
+  },[match])
 
   useEffect(() => {
     if (playing) {

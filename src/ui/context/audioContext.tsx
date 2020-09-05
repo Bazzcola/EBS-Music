@@ -12,6 +12,8 @@ export interface Props {
   shuffle: boolean;
   repeatOne: boolean;
   repeatAll: boolean;
+  profile:boolean;
+  setProfile:React.Dispatch<React.SetStateAction<boolean>>;
   setShuffle: React.Dispatch<React.SetStateAction<boolean>>;
   setRepeatOne: React.Dispatch<React.SetStateAction<boolean>>;
   setRepeatAll: React.Dispatch<React.SetStateAction<boolean>>;
@@ -144,6 +146,7 @@ const defaultValue = {
   audioFiles: '',
   currentSong: false,
   counter: 0,
+  profile:false,
   setCurrentSong: () => {},
   setCurrentTimeSecond: () => {},
   setDurationTime: () => {},
@@ -155,7 +158,8 @@ const defaultValue = {
   setShuffle: () => {},
   setRepeatAll: () => {},
   setRepeatOne: () => {},
-  setCounter: () => {}
+  setCounter: () => {},
+  setProfile: () => {}
 };
 export const AudioContext = React.createContext<Props>(defaultValue);
 
@@ -173,10 +177,13 @@ export const ProviderAudioContext = (props: ProviderProps) => {
   const [currentVolume, setCurrentVolume] = useState<number>(0);
   const [audioFiles, setAudioFiles] = useState<string | undefined>('');
   const [counter, setCounter] = useState<number>(0);
+  const [profile, setProfile] = useState<boolean>(false);
 
   return (
     <AudioContext.Provider
       value={{
+        profile,
+        setProfile,
         shuffle,
         setShuffle,
         repeatAll,
