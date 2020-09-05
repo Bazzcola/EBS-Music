@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { CircleButton } from 'ui/components/atoms/CircleButton/CircleButton';
 import { Button } from 'ui/components/atoms/Button/Button';
 import { Tracks } from 'ui/context/audioContext';
-import { Link } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
 import { AudioContext } from 'ui/context/audioContext';
 import './TrackList.scss';
 
@@ -47,9 +47,11 @@ export const TrackList = () => {
                   id={item.id}
                 />
                 <div className="date_item">
-                  <Link to={`/${item.title}`}>
-                    <p>{item.title}</p>
-                  </Link>
+                  <Route>
+                    <Link to={`/${item.title}`}>
+                      <p>{item.title}</p>
+                    </Link>
+                  </Route>
                   <p>{item.duration}</p>
                 </div>
               </div>

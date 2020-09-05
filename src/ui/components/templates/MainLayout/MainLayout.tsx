@@ -9,14 +9,14 @@ import 'ui/components/templates/MainLayout/MainLayout.scss';
 export const MainLayout = () => {
   return (
     <ProviderAudioContext>
-    <div className="nav-links">
-      <div className="nav-links__logo">
-        <a href="/">
-          <img src="http://cdns-files.dzcdn.net/cache/slash/images/common/logos/deezer_black.f81ede323baaf2e257b7ffaa71d657af.png" alt="" />
-        </a>
-      </div>
-    </div>
       <Router>
+        <div className="nav-links">
+          <div className="nav-links__logo">
+            <a href="/">
+              <img src="http://cdns-files.dzcdn.net/cache/slash/images/common/logos/deezer_black.f81ede323baaf2e257b7ffaa71d657af.png" alt="" />
+            </a>
+          </div>
+        </div>
         <div className="main_container">
           <Switch>
             <Route path="/" exact>

@@ -17,6 +17,7 @@ export const ShuffleButton = (props: ButtonProps) => {
     } else {
       setShuffle(false);
     }
+    // eslint-disable-next-line
   }, [active, currentTimeSecond]);
   return (
     <>

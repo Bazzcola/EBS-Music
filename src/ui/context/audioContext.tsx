@@ -46,7 +46,7 @@ export const Tracks = [
     title: 'Track1',
     name: 'Music1',
     src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
-    duration: '6:20',
+    duration: '6:13',
     img:
       'https://akket.com/wp-content/uploads/2019/11/World-of-Warcraft-Shadowlands-Blizzard.jpg'
   },
@@ -55,7 +55,7 @@ export const Tracks = [
     title: 'Track2',
     name: 'Music2',
     src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
-    duration: '5:30',
+    duration: '7:06',
     img:
       'https://vignette.wikia.nocookie.net/wowwiki/images/5/5c/Fanart-0827-large.jpg/revision/latest?cb=20140526223426'
   },
@@ -64,7 +64,7 @@ export const Tracks = [
     title: 'Track3',
     name: 'Music3',
     src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3',
-    duration: '4:10',
+    duration: '5:44',
     img:
       'https://i.pinimg.com/736x/a4/55/84/a455849801351d1025c12fc8e894291a.jpg'
   },
@@ -73,7 +73,7 @@ export const Tracks = [
     title: 'Track4',
     name: 'Music4',
     src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3',
-    duration: '6:15',
+    duration: '5:03',
     img:
       'https://i.pinimg.com/originals/25/68/bb/2568bbbcece75bf9a94da355beb02306.jpg'
   },
@@ -82,7 +82,7 @@ export const Tracks = [
     title: 'Track5',
     name: 'Music5',
     src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3',
-    duration: '6:15',
+    duration: '5:54',
     img:
       'https://i.pinimg.com/originals/25/68/bb/2568bbbcece75bf9a94da355beb02306.jpg'
   },
@@ -91,7 +91,7 @@ export const Tracks = [
     title: 'Track6',
     name: 'Music6',
     src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3',
-    duration: '6:15',
+    duration: '4:40',
     img:
       'https://i.pinimg.com/originals/25/68/bb/2568bbbcece75bf9a94da355beb02306.jpg'
   },
@@ -100,7 +100,7 @@ export const Tracks = [
     title: 'Track7',
     name: 'Music7',
     src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3',
-    duration: '6:15',
+    duration: '7:01',
     img:
       'https://i.pinimg.com/originals/25/68/bb/2568bbbcece75bf9a94da355beb02306.jpg'
   },
@@ -109,7 +109,7 @@ export const Tracks = [
     title: 'Track8',
     name: 'Music8',
     src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3',
-    duration: '6:15',
+    duration: '5:25',
     img:
       'https://i.pinimg.com/originals/25/68/bb/2568bbbcece75bf9a94da355beb02306.jpg'
   },
@@ -118,7 +118,7 @@ export const Tracks = [
     title: 'Track9',
     name: 'Music9',
     src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3',
-    duration: '6:15',
+    duration: '6:29',
     img:
       'https://i.pinimg.com/originals/25/68/bb/2568bbbcece75bf9a94da355beb02306.jpg'
   },
@@ -127,7 +127,7 @@ export const Tracks = [
     title: 'Track10',
     name: 'Music10',
     src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3',
-    duration: '6:15',
+    duration: '8:47',
     img:
       'https://i.pinimg.com/originals/25/68/bb/2568bbbcece75bf9a94da355beb02306.jpg'
   }

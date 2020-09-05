@@ -24,7 +24,7 @@ export const VolumeButton = () => {
     if (volume > 0 && active === false) {
       setActive(true);
     }
-  }, [volume]);
+  }, [volume, active]);
   return (
     <>
       <button

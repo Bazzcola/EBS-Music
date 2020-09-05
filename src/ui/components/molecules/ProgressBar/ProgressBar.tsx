@@ -29,7 +29,7 @@ export const ProgressBar = () => {
   const [prevSong, setPrevSong] = useState<number>();
   const audio = useRef<any>(null);
   const cur = audio.current;
-
+  
   useEffect(() => {
     setFiles(Tracks.map((item: song) => item.src));
   }, []);
@@ -38,7 +38,7 @@ export const ProgressBar = () => {
     Tracks.filter((item: song) =>
       item.src === audioFiles ? setCurrentData(item) : false
     );
-  },[currentTimeSecond]);
+  },[currentTimeSecond, audioFiles]);
 
   useEffect(() => {
     const cur = audio.current;
@@ -64,10 +64,6 @@ export const ProgressBar = () => {
     }
     // eslint-disable-next-line
   }, [currentTimeSecond, clickedTime, playing, barTooltip, volume]);
-
-  useEffect(() => {
-
-  }, [shuffle]);
 
   let keys: any = Object.keys(files);
 
@@ -102,7 +98,10 @@ export const ProgressBar = () => {
         }
         
       } else {
+        await cur.load();////?????
+        await cur.pause();
         setPlaying(false);
+        console.log(playing + ' ошибка')
       }
       
     }

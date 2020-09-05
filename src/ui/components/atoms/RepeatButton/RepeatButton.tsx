@@ -39,6 +39,7 @@ export const RepeatButton = (props: ButtonProps) => {
       setRepeatOne(true);
       console.log('повторять песню');
     }
+    // eslint-disable-next-line
   }, [active, repeatAll, repeatOne]);
 
   const tooltipText = () => {
