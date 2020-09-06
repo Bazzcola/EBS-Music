@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext, useRef } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { AudioContext, Tracks } from 'ui/context/audioContext';
 import 'ui/components/molecules/Profile/Profile.scss';
@@ -17,6 +17,14 @@ export const Profile = () => {
   const [track, setTrack] = useState<song>();
   const [active, setActive] = useState<boolean>(false);
   const { playing, setPlaying, setAudioFiles, setProfile, audioFiles } = useContext(AudioContext);
+  
+  useEffect(() => {
+    if (playing) {
+      setActive(true);
+    } else {
+      setActive(false);
+    }
+  }, [playing, match]);
 
   const changes = () => {
     setActive(!active);
@@ -36,15 +44,6 @@ export const Profile = () => {
     }
     // eslint-disable-next-line
   },[match])
-
-  useEffect(() => {
-    if (playing) {
-      setActive(true);
-    }
-    if (playing === false) {
-      setActive(false);
-    }
-  }, [playing]);
 
   useEffect(() => {
     Tracks.filter((item: song) =>

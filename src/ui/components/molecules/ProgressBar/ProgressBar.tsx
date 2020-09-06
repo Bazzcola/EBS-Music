@@ -20,16 +20,27 @@ export const ProgressBar = () => {
     setCounter,
     shuffle,
     repeatOne,
-    repeatAll
+    repeatAll,
+    profile
   } = useContext(AudioContext);
   const [barTooltip, setBarTooltip] = useState<number>(0);
   const [files, setFiles] = useState<string[]>(['']);
   const [random, setRandom] = useState<number>(1);
   const [currentData, setCurrentData] = useState<song>();
   const [prevSong, setPrevSong] = useState<number>();
+  const barDiv = useRef<any>(null);
   const audio = useRef<any>(null);
   const cur = audio.current;
-  
+
+  useEffect(() => {
+    if(profile) {
+      (async function anyNameFunction() {
+        await cur.load();
+        await cur.pause();
+      })();
+    }
+  },[profile])
+
   useEffect(() => {
     setFiles(Tracks.map((item: song) => item.src));
   }, []);
@@ -39,6 +50,16 @@ export const ProgressBar = () => {
       item.src === audioFiles ? setCurrentData(item) : false
     );
   },[currentTimeSecond, audioFiles]);
+
+  useEffect(() => {
+    const cur = audio.current;
+    playing ? (async function anyNameFunction() {
+      await cur.play();
+    })() : (async function anyNameFunction() {
+      await cur.load();
+      await cur.pause();
+    })();
+  },[playing])
 
   useEffect(() => {
     const cur = audio.current;
@@ -52,8 +73,6 @@ export const ProgressBar = () => {
     };
 
     cur.volume = volume;
-
-    playing ? cur.play() : cur.pause();
 
     if (barTooltip < 0) {
       setBarTooltip(0);
@@ -77,7 +96,6 @@ export const ProgressBar = () => {
           setAudioFiles(files[keys[0]]);
         } else {
           await cur.play();
-          console.log('нормально')
           setCounter((count) => count + 1);
           setAudioFiles(files[keys[counter + 1]]);
           setPrevSong(counter + 1);
@@ -92,13 +110,12 @@ export const ProgressBar = () => {
           await cur.play();
           setRandom(Math.floor(Math.random() * 9))
           setCounter(random)
-          console.log('шафл' + random)
           setAudioFiles(files[keys[random]])
           setPrevSong(random);
         }
         
       } else {
-        await cur.load();////?????
+        await cur.load();
         await cur.pause();
         setPlaying(false);
         console.log(playing + ' ошибка')
@@ -109,7 +126,7 @@ export const ProgressBar = () => {
 
   const calcClickedTime = (e: { pageX: number }) => {
     const clickPositionInPage = e.pageX;
-    const bar: any = document.querySelector('.bar__progress');
+    const bar = barDiv.current;
     const barStart = bar.getBoundingClientRect().left + window.scrollX;
     const barWidth = bar.offsetWidth;
     const clickPositionInBar = clickPositionInPage - barStart;
@@ -200,6 +217,7 @@ export const ProgressBar = () => {
           data-tip=""
           data-for="bar_time"
           className="bar__progress"
+          ref={barDiv}
           style={{
             background: `linear-gradient(to right, #6fd44a ${curPercentage}%, grey 0)`
           }}
