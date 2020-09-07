@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
-import { AudioContext, Tracks } from 'ui/context/audioContext';
+import { AudioContext, tracks } from 'ui/context/audioContext';
 import 'ui/components/molecules/Profile/Profile.scss';
 
 type song = {
@@ -52,10 +52,10 @@ export const Profile = () => {
     // eslint-disable-next-line
   }, [match]);
   useEffect(() => {
-    Tracks.filter((item: song) =>
+    tracks.filter((item: song) =>
       item.title === match.name ? setTrack(item) : false
     );
-    Tracks.filter((item: song) =>
+    tracks.filter((item: song) =>
       item.title === match.name ? setAudioFiles(item.src) : false
     );
     // eslint-disable-next-line

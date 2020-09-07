@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect, useCallback } from 'react';
 import { AudioContext, song } from 'ui/context/audioContext';
-import { Tracks } from 'ui/context/audioContext';
+import { tracks } from 'ui/context/audioContext';
 import './PrevButton.scss';
 
 export const PrevButton = () => {
@@ -14,7 +14,7 @@ export const PrevButton = () => {
   } = useContext(AudioContext);
 
   useEffect(() => {
-    setFiles(Tracks.map((item: song) => item.src));
+    setFiles(tracks.map((item: song) => item.src));
   }, []);
 
   let keys: any = Object.keys(files);

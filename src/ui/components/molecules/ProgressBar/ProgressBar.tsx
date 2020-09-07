@@ -5,7 +5,7 @@ import React, {
   useState,
   useCallback
 } from 'react';
-import { AudioContext, Tracks, song } from 'ui/context/audioContext';
+import { AudioContext, tracks, song } from 'ui/context/audioContext';
 import ReactTooltip from 'react-tooltip';
 import 'ui/components/molecules/ProgressBar/ProgressBar.scss';
 
@@ -49,11 +49,11 @@ export const ProgressBar = () => {
   }, [profile]);
 
   useEffect(() => {
-    setFiles(Tracks.map((item: song) => item.src));
+    setFiles(tracks.map((item: song) => item.src));
   }, []);
 
   useEffect(() => {
-    Tracks.filter((item: song) =>
+    tracks.filter((item: song) =>
       item.src === audioFiles ? setCurrentData(item) : false
     );
   }, [currentTimeSecond, audioFiles]);

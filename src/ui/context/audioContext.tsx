@@ -12,8 +12,8 @@ export interface Props {
   shuffle: boolean;
   repeatOne: boolean;
   repeatAll: boolean;
-  profile:boolean;
-  setProfile:React.Dispatch<React.SetStateAction<boolean>>;
+  profile: boolean;
+  setProfile: React.Dispatch<React.SetStateAction<boolean>>;
   setShuffle: React.Dispatch<React.SetStateAction<boolean>>;
   setRepeatOne: React.Dispatch<React.SetStateAction<boolean>>;
   setRepeatAll: React.Dispatch<React.SetStateAction<boolean>>;
@@ -40,7 +40,7 @@ interface ProviderProps {
   children: ReactNode;
 }
 
-export const Tracks = [
+export const tracks: song[] = [
   {
     id: 1,
     title: 'Track1',
@@ -146,7 +146,7 @@ const defaultValue = {
   audioFiles: '',
   currentSong: false,
   counter: 0,
-  profile:false,
+  profile: false,
   setCurrentSong: () => {},
   setCurrentTimeSecond: () => {},
   setDurationTime: () => {},
