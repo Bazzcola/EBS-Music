@@ -1,0 +1,360 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders ControlButtons correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="control_bar"
+  >
+    <div
+      class="control_buttons"
+    >
+      <div
+        class="control_repeat_button"
+      >
+        <button
+          class="repeat_button"
+          currentitem="false"
+          data-for="repeat"
+          data-tip=""
+        >
+          <svg
+            class="'svg_repeat' svg_repeat"
+            viewBox="0 0 12 12"
+          >
+            <path
+              d="M8.667 9.214H8V10.5L5.333 8.571V8.25c0-.178.149-.321.334-.321h3c1.104 0 2-.864 2-1.929 0-1.066-.896-1.929-2-1.929h-.334A.327.327 0 0 1 8 3.75v-.643c0-.178.148-.321.333-.321h.334C10.507 2.786 12 4.225 12 6s-1.493 3.214-3.333 3.214zM6.333 4.071h-3c-1.105 0-2 .863-2 1.929 0 1.065.895 1.929 2 1.929h.334c.183 0 .333.143.333.321v.643c0 .177-.15.321-.333.321h-.334C1.493 9.214 0 7.775 0 6s1.493-3.214 3.333-3.214H4V1.5l2.667 1.929v.321c0 .177-.15.321-.334.321z"
+            />
+          </svg>
+        </button>
+        <div
+          class="__react_component_tooltip t894626d9-0374-4f8a-aa5f-a854ee4f65d0 place-top type-dark"
+          data-id="tooltip"
+          id="repeat"
+        >
+          <style>
+            
+  	.t894626d9-0374-4f8a-aa5f-a854ee4f65d0 {
+	    color: #fff;
+	    background: #222;
+	    border: 1px solid transparent;
+  	}
+
+  	.t894626d9-0374-4f8a-aa5f-a854ee4f65d0.place-top {
+        margin-top: -10px;
+    }
+    .t894626d9-0374-4f8a-aa5f-a854ee4f65d0.place-top::before {
+        border-top: 8px solid transparent;
+    }
+    .t894626d9-0374-4f8a-aa5f-a854ee4f65d0.place-top::after {
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        bottom: -6px;
+        left: 50%;
+        margin-left: -8px;
+        border-top-color: #222;
+        border-top-style: solid;
+        border-top-width: 6px;
+    }
+
+    .t894626d9-0374-4f8a-aa5f-a854ee4f65d0.place-bottom {
+        margin-top: 10px;
+    }
+    .t894626d9-0374-4f8a-aa5f-a854ee4f65d0.place-bottom::before {
+        border-bottom: 8px solid transparent;
+    }
+    .t894626d9-0374-4f8a-aa5f-a854ee4f65d0.place-bottom::after {
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        top: -6px;
+        left: 50%;
+        margin-left: -8px;
+        border-bottom-color: #222;
+        border-bottom-style: solid;
+        border-bottom-width: 6px;
+    }
+
+    .t894626d9-0374-4f8a-aa5f-a854ee4f65d0.place-left {
+        margin-left: -10px;
+    }
+    .t894626d9-0374-4f8a-aa5f-a854ee4f65d0.place-left::before {
+        border-left: 8px solid transparent;
+    }
+    .t894626d9-0374-4f8a-aa5f-a854ee4f65d0.place-left::after {
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        right: -6px;
+        top: 50%;
+        margin-top: -4px;
+        border-left-color: #222;
+        border-left-style: solid;
+        border-left-width: 6px;
+    }
+
+    .t894626d9-0374-4f8a-aa5f-a854ee4f65d0.place-right {
+        margin-left: 10px;
+    }
+    .t894626d9-0374-4f8a-aa5f-a854ee4f65d0.place-right::before {
+        border-right: 8px solid transparent;
+    }
+    .t894626d9-0374-4f8a-aa5f-a854ee4f65d0.place-right::after {
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        left: -6px;
+        top: 50%;
+        margin-top: -4px;
+        border-right-color: #222;
+        border-right-style: solid;
+        border-right-width: 6px;
+    }
+  
+          </style>
+          <span
+            class="repeat_tooltip"
+          >
+            Repeat all track in list
+          </span>
+        </div>
+      </div>
+      <div
+        class="control_shuffle_button"
+      >
+        <button
+          class="shuffle_button"
+          currentitem="false"
+          data-for="shuffle"
+          data-tip=""
+        >
+          <svg
+            class="svg_shuffle"
+            viewBox="0 0 12 12"
+          >
+            <path
+              d="M9.333 9.214h-.666C6.826 9.214 5.333 7.775 5.333 6c0-1.066-.894-1.929-2-1.929H.683C.298 4.071 0 3.784 0 3.43c0-.356.298-.643.667-.729.137 0 2.65.01 2.666 0 1.841.086 3.334 1.525 3.334 3.3 0 1.065.896 1.929 2 1.929h3c.185 0 .333.143.333.321v.321L9.333 10.5V9.214zm-.666-5.143c-.367 0-.708.103-1.004.27a4.497 4.497 0 0 0-.672-1.104c.493-.28 1.062-.451 1.709-.537.013.03.51 0 .6 0V1.5L12 3.429v.321a.327.327 0 0 1-.333.321h-3zM3.333 7.93c.369 0 .709-.103 1.004-.27.168.404.4.767.672 1.104-.493.28-1.062.451-1.676.537-.018-.011-2.435 0-2.666 0C.298 9.214 0 8.927 0 8.571c0-.355.298-.642.667-.642h2.666z"
+            />
+          </svg>
+        </button>
+        <div
+          class="__react_component_tooltip te031569a-c613-4078-b6f8-50aab64ac9d2 place-top type-dark"
+          data-id="tooltip"
+          id="shuffle"
+        >
+          <style>
+            
+  	.te031569a-c613-4078-b6f8-50aab64ac9d2 {
+	    color: #fff;
+	    background: #222;
+	    border: 1px solid transparent;
+  	}
+
+  	.te031569a-c613-4078-b6f8-50aab64ac9d2.place-top {
+        margin-top: -10px;
+    }
+    .te031569a-c613-4078-b6f8-50aab64ac9d2.place-top::before {
+        border-top: 8px solid transparent;
+    }
+    .te031569a-c613-4078-b6f8-50aab64ac9d2.place-top::after {
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        bottom: -6px;
+        left: 50%;
+        margin-left: -8px;
+        border-top-color: #222;
+        border-top-style: solid;
+        border-top-width: 6px;
+    }
+
+    .te031569a-c613-4078-b6f8-50aab64ac9d2.place-bottom {
+        margin-top: 10px;
+    }
+    .te031569a-c613-4078-b6f8-50aab64ac9d2.place-bottom::before {
+        border-bottom: 8px solid transparent;
+    }
+    .te031569a-c613-4078-b6f8-50aab64ac9d2.place-bottom::after {
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        top: -6px;
+        left: 50%;
+        margin-left: -8px;
+        border-bottom-color: #222;
+        border-bottom-style: solid;
+        border-bottom-width: 6px;
+    }
+
+    .te031569a-c613-4078-b6f8-50aab64ac9d2.place-left {
+        margin-left: -10px;
+    }
+    .te031569a-c613-4078-b6f8-50aab64ac9d2.place-left::before {
+        border-left: 8px solid transparent;
+    }
+    .te031569a-c613-4078-b6f8-50aab64ac9d2.place-left::after {
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        right: -6px;
+        top: 50%;
+        margin-top: -4px;
+        border-left-color: #222;
+        border-left-style: solid;
+        border-left-width: 6px;
+    }
+
+    .te031569a-c613-4078-b6f8-50aab64ac9d2.place-right {
+        margin-left: 10px;
+    }
+    .te031569a-c613-4078-b6f8-50aab64ac9d2.place-right::before {
+        border-right: 8px solid transparent;
+    }
+    .te031569a-c613-4078-b6f8-50aab64ac9d2.place-right::after {
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        left: -6px;
+        top: 50%;
+        margin-top: -4px;
+        border-right-color: #222;
+        border-right-style: solid;
+        border-right-width: 6px;
+    }
+  
+          </style>
+          <span
+            class="shuffle_tooltip"
+          >
+            Turn on Shuffle
+          </span>
+        </div>
+      </div>
+      <div
+        class="control_volume_button"
+      >
+        <button
+          class="volume_button"
+          currentitem="false"
+          data-for="volume"
+          data-tip=""
+        >
+          <svg
+            class="svg_volume"
+            viewBox="0 0 32 32"
+          >
+            <path
+              d="M22.485 25.985c-0.384 0-0.768-0.146-1.061-0.439-0.586-0.586-0.586-1.535 0-2.121 4.094-4.094 4.094-10.755 0-14.849-0.586-0.586-0.586-1.536 0-2.121s1.536-0.586 2.121 0c2.55 2.55 3.954 5.94 3.954 9.546s-1.404 6.996-3.954 9.546c-0.293 0.293-0.677 0.439-1.061 0.439v0zM17.157 23.157c-0.384 0-0.768-0.146-1.061-0.439-0.586-0.586-0.586-1.535 0-2.121 2.534-2.534 2.534-6.658 0-9.192-0.586-0.586-0.586-1.536 0-2.121s1.535-0.586 2.121 0c3.704 3.704 3.704 9.731 0 13.435-0.293 0.293-0.677 0.439-1.061 0.439z"
+            />
+            <path
+              d="M13 30c-0.26 0-0.516-0.102-0.707-0.293l-7.707-7.707h-3.586c-0.552 0-1-0.448-1-1v-10c0-0.552 0.448-1 1-1h3.586l7.707-7.707c0.286-0.286 0.716-0.372 1.090-0.217s0.617 0.519 0.617 0.924v26c0 0.404-0.244 0.769-0.617 0.924-0.124 0.051-0.254 0.076-0.383 0.076z"
+            />
+          </svg>
+        </button>
+        <div
+          class="__react_component_tooltip t70e2cb99-68cb-414f-ac59-19d77b9413ba place-top type-dark allow_click"
+          data-id="tooltip"
+          id="volume"
+        >
+          <style>
+            
+  	.t70e2cb99-68cb-414f-ac59-19d77b9413ba {
+	    color: #fff;
+	    background: #222;
+	    border: 1px solid transparent;
+  	}
+
+  	.t70e2cb99-68cb-414f-ac59-19d77b9413ba.place-top {
+        margin-top: -10px;
+    }
+    .t70e2cb99-68cb-414f-ac59-19d77b9413ba.place-top::before {
+        border-top: 8px solid transparent;
+    }
+    .t70e2cb99-68cb-414f-ac59-19d77b9413ba.place-top::after {
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        bottom: -6px;
+        left: 50%;
+        margin-left: -8px;
+        border-top-color: #222;
+        border-top-style: solid;
+        border-top-width: 6px;
+    }
+
+    .t70e2cb99-68cb-414f-ac59-19d77b9413ba.place-bottom {
+        margin-top: 10px;
+    }
+    .t70e2cb99-68cb-414f-ac59-19d77b9413ba.place-bottom::before {
+        border-bottom: 8px solid transparent;
+    }
+    .t70e2cb99-68cb-414f-ac59-19d77b9413ba.place-bottom::after {
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        top: -6px;
+        left: 50%;
+        margin-left: -8px;
+        border-bottom-color: #222;
+        border-bottom-style: solid;
+        border-bottom-width: 6px;
+    }
+
+    .t70e2cb99-68cb-414f-ac59-19d77b9413ba.place-left {
+        margin-left: -10px;
+    }
+    .t70e2cb99-68cb-414f-ac59-19d77b9413ba.place-left::before {
+        border-left: 8px solid transparent;
+    }
+    .t70e2cb99-68cb-414f-ac59-19d77b9413ba.place-left::after {
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        right: -6px;
+        top: 50%;
+        margin-top: -4px;
+        border-left-color: #222;
+        border-left-style: solid;
+        border-left-width: 6px;
+    }
+
+    .t70e2cb99-68cb-414f-ac59-19d77b9413ba.place-right {
+        margin-left: 10px;
+    }
+    .t70e2cb99-68cb-414f-ac59-19d77b9413ba.place-right::before {
+        border-right: 8px solid transparent;
+    }
+    .t70e2cb99-68cb-414f-ac59-19d77b9413ba.place-right::after {
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        left: -6px;
+        top: 50%;
+        margin-top: -4px;
+        border-right-color: #222;
+        border-right-style: solid;
+        border-right-width: 6px;
+    }
+  
+          </style>
+          <div
+            class="input_check"
+          >
+            <input
+              max="10"
+              min="0"
+              step="1"
+              type="range"
+              value="5"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="next_queue"
+    >
+      <div
+        class="queue_box"
+      >
+        <div
+          class="queue_image"
+          style="background-position: center; background-size: cover; background-repeat: no-repeat;"
+        >
+          <span>
+            Queue
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

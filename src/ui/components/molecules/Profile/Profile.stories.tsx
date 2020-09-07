@@ -1,5 +1,6 @@
 import React from 'react';
 import { Profile } from 'ui/components/molecules/Profile/Profile';
+import { MemoryRouter } from 'react-router-dom';
 
 export default {
   title: 'Molecules/Profile',
@@ -7,5 +8,9 @@ export default {
 };
 
 export const Profile1 = () => {
-  return <Profile />;
+  return (
+    <MemoryRouter>
+      <Profile />
+    </MemoryRouter>
+  );
 };

@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders queue correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="queue_box"
+  >
+    <div
+      class="queue_image"
+      style="background-position: center; background-size: cover; background-repeat: no-repeat;"
+    >
+      <span>
+        Queue
+      </span>
+    </div>
+  </div>
+</DocumentFragment>
+`;

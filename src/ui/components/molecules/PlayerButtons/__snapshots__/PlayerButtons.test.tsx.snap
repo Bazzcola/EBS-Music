@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders PlayerButtons correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="btn_box"
+  >
+    <div
+      class="btn_box__item"
+    >
+      <button
+        class="prev_button "
+      >
+        <svg
+          class="svg_prevbtn"
+          viewBox="0 0 12 12"
+        >
+          <path
+            d="M2 5.397V.5a.5.5 0 1 0-1 0v11a.5.5 0 1 0 1 0V6.597L11 12V0L2 5.397z"
+          />
+        </svg>
+      </button>
+    </div>
+    <div
+      class="btn_box__item"
+    >
+      <button
+        class="play_button"
+      >
+        <svg
+          class="svg_playbtn"
+          viewBox="0 0 12 12"
+        >
+          <path
+            d="M2.5.5v11l9-5.5z"
+          />
+        </svg>
+      </button>
+    </div>
+    <div
+      class="btn_box__item"
+    >
+      <button
+        class="next_button "
+      >
+        <svg
+          class="svg_nextbtn"
+          viewBox="0 0 12 12"
+        >
+          <path
+            d="M11 .5v11c0 .276-.232.5-.5.5a.503.503 0 0 1-.5-.5V7.08L1.562 11.95A.375.375 0 0 1 1 11.624V.376c0-.29.312-.47.562-.325L10 4.919V.5c0-.276.232-.5.5-.5.276 0 .5.229.5.5z"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;

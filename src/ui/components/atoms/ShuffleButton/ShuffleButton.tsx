@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useCallback } from 'react';
 import ReactTooltip from 'react-tooltip';
 import { AudioContext } from 'ui/context/audioContext';
 import './ShuffleButton.scss';
@@ -8,9 +8,9 @@ export type ButtonProps = {
 export const ShuffleButton = (props: ButtonProps) => {
   const [active, setActive] = useState<boolean>(false);
   const { setShuffle, currentTimeSecond } = useContext(AudioContext);
-  const changes = () => {
+  const changes = useCallback(() => {
     setActive(!active);
-  };
+  }, [active]);
   useEffect(() => {
     if (active) {
       setShuffle(true);

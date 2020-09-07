@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect, useCallback } from 'react';
 import ReactTooltip from 'react-tooltip';
 import { VolumeBar } from 'ui/components/atoms/VolumeBar/VolumeBar';
 import { AudioContext } from 'ui/context/audioContext';
@@ -8,18 +8,15 @@ export const VolumeButton = () => {
   const [active, setActive] = useState<boolean>(true);
   const { volume, setVolume } = useContext(AudioContext);
   const { currentVolume, setCurrentVolume } = useContext(AudioContext);
-  const changes = () => {
+  const changes = useCallback(() => {
     setActive(!active);
     if (active) {
       setCurrentVolume(volume);
       setVolume(0);
-      console.log(volume);
-      console.log('громкость ноль');
     } else {
       setVolume(currentVolume);
-      console.log('прошлая громкость');
     }
-  };
+  }, [active, currentVolume, setCurrentVolume, setVolume, volume]);
   useEffect(() => {
     if (volume > 0 && active === false) {
       setActive(true);

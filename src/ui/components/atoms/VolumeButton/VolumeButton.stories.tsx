@@ -1,10 +1,15 @@
 import React from 'react';
 import { VolumeButton } from 'ui/components/atoms/VolumeButton/VolumeButton';
+import { ProviderAudioContext } from 'ui/context/audioContext';
 export default {
   title: 'Atoms/VolumeButton',
   component: VolumeButton
 };
 
 export const Button6 = () => {
-  return <VolumeButton />;
+  return (
+    <ProviderAudioContext>
+      <VolumeButton />
+    </ProviderAudioContext>
+  );
 };

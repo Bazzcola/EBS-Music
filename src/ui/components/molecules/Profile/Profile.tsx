@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState, useContext, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 import { AudioContext, Tracks } from 'ui/context/audioContext';
 import 'ui/components/molecules/Profile/Profile.scss';
@@ -16,8 +16,15 @@ export const Profile = () => {
   const match = useParams<{ name: string }>();
   const [track, setTrack] = useState<song>();
   const [active, setActive] = useState<boolean>(false);
-  const { playing, setPlaying, setAudioFiles, setProfile, audioFiles } = useContext(AudioContext);
-  
+  const {
+    playing,
+    setPlaying,
+    setAudioFiles,
+    setProfile,
+    profile,
+    audioFiles
+  } = useContext(AudioContext);
+
   useEffect(() => {
     if (playing) {
       setActive(true);
@@ -26,25 +33,24 @@ export const Profile = () => {
     }
   }, [playing, match]);
 
-  const changes = () => {
+  const changes = useCallback(() => {
     setActive(!active);
     if (!active) {
       setPlaying(true);
     } else {
       setPlaying(false);
     }
-  };
+  }, [active, setPlaying]);
 
   useEffect(() => {
-    if(match.name.length > 2){
+    if (match) {
       setProfile(true);
-    }
-    if(match.name.length === 0){
+      setPlaying(false);
+    } else {
       setProfile(false);
     }
     // eslint-disable-next-line
-  },[match])
-
+  }, [match]);
   useEffect(() => {
     Tracks.filter((item: song) =>
       item.title === match.name ? setTrack(item) : false
@@ -58,7 +64,14 @@ export const Profile = () => {
   return (
     <div className="profile">
       <div className="profile_img">
-        <img src={track?.img} alt="" />
+        <img
+          src={
+            profile
+              ? track?.img
+              : 'https://i.pinimg.com/564x/2e/9a/d8/2e9ad8621e03cd81e2d81fcdbe327ba6.jpg'
+          }
+          alt=""
+        />
         {active ? (
           <button
             onClick={changes}
@@ -80,8 +93,8 @@ export const Profile = () => {
       </div>
       <div className="profile_text">
         <span>EXPLICIT</span>
-        <h2>{track?.title}</h2>
-        <p>{track?.name}</p>
+        <h2>{profile ? track?.title : 'Storybook'}</h2>
+        <p>{profile ? track?.name : 'Storybook'}</p>
       </div>
     </div>
   );

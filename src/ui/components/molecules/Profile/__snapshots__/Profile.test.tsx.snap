@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders Profile correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="profile"
+  >
+    <div
+      class="profile_img"
+    >
+      <img
+        alt=""
+        src="https://i.pinimg.com/564x/2e/9a/d8/2e9ad8621e03cd81e2d81fcdbe327ba6.jpg"
+      />
+      <button
+        class="profile_circle_button profile_circle_button_white"
+      >
+        <svg
+          class="profile_svg_stop profile_svg_stop_black"
+          viewBox="0 0 12 12"
+        >
+          <path
+            d="M2.5.5v11l9-5.5z"
+          />
+        </svg>
+      </button>
+    </div>
+    <div
+      class="profile_text"
+    >
+      <span>
+        EXPLICIT
+      </span>
+      <h2>
+        Storybook
+      </h2>
+      <p>
+        Storybook
+      </p>
+    </div>
+  </div>
+</DocumentFragment>
+`;

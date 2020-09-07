@@ -1,0 +1,118 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders VolumeButton correctly 1`] = `
+<DocumentFragment>
+  <button
+    class="volume_button"
+    currentitem="false"
+    data-for="volume"
+    data-tip=""
+  >
+    <svg
+      class="svg_volume"
+      viewBox="0 0 32 32"
+    >
+      <path
+        d="M22.485 25.985c-0.384 0-0.768-0.146-1.061-0.439-0.586-0.586-0.586-1.535 0-2.121 4.094-4.094 4.094-10.755 0-14.849-0.586-0.586-0.586-1.536 0-2.121s1.536-0.586 2.121 0c2.55 2.55 3.954 5.94 3.954 9.546s-1.404 6.996-3.954 9.546c-0.293 0.293-0.677 0.439-1.061 0.439v0zM17.157 23.157c-0.384 0-0.768-0.146-1.061-0.439-0.586-0.586-0.586-1.535 0-2.121 2.534-2.534 2.534-6.658 0-9.192-0.586-0.586-0.586-1.536 0-2.121s1.535-0.586 2.121 0c3.704 3.704 3.704 9.731 0 13.435-0.293 0.293-0.677 0.439-1.061 0.439z"
+      />
+      <path
+        d="M13 30c-0.26 0-0.516-0.102-0.707-0.293l-7.707-7.707h-3.586c-0.552 0-1-0.448-1-1v-10c0-0.552 0.448-1 1-1h3.586l7.707-7.707c0.286-0.286 0.716-0.372 1.090-0.217s0.617 0.519 0.617 0.924v26c0 0.404-0.244 0.769-0.617 0.924-0.124 0.051-0.254 0.076-0.383 0.076z"
+      />
+    </svg>
+  </button>
+  <div
+    class="__react_component_tooltip te873c3aa-8ab0-4046-8526-84d29fc3bd46 place-top type-dark allow_click"
+    data-id="tooltip"
+    id="volume"
+  >
+    <style>
+      
+  	.te873c3aa-8ab0-4046-8526-84d29fc3bd46 {
+	    color: #fff;
+	    background: #222;
+	    border: 1px solid transparent;
+  	}
+
+  	.te873c3aa-8ab0-4046-8526-84d29fc3bd46.place-top {
+        margin-top: -10px;
+    }
+    .te873c3aa-8ab0-4046-8526-84d29fc3bd46.place-top::before {
+        border-top: 8px solid transparent;
+    }
+    .te873c3aa-8ab0-4046-8526-84d29fc3bd46.place-top::after {
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        bottom: -6px;
+        left: 50%;
+        margin-left: -8px;
+        border-top-color: #222;
+        border-top-style: solid;
+        border-top-width: 6px;
+    }
+
+    .te873c3aa-8ab0-4046-8526-84d29fc3bd46.place-bottom {
+        margin-top: 10px;
+    }
+    .te873c3aa-8ab0-4046-8526-84d29fc3bd46.place-bottom::before {
+        border-bottom: 8px solid transparent;
+    }
+    .te873c3aa-8ab0-4046-8526-84d29fc3bd46.place-bottom::after {
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        top: -6px;
+        left: 50%;
+        margin-left: -8px;
+        border-bottom-color: #222;
+        border-bottom-style: solid;
+        border-bottom-width: 6px;
+    }
+
+    .te873c3aa-8ab0-4046-8526-84d29fc3bd46.place-left {
+        margin-left: -10px;
+    }
+    .te873c3aa-8ab0-4046-8526-84d29fc3bd46.place-left::before {
+        border-left: 8px solid transparent;
+    }
+    .te873c3aa-8ab0-4046-8526-84d29fc3bd46.place-left::after {
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        right: -6px;
+        top: 50%;
+        margin-top: -4px;
+        border-left-color: #222;
+        border-left-style: solid;
+        border-left-width: 6px;
+    }
+
+    .te873c3aa-8ab0-4046-8526-84d29fc3bd46.place-right {
+        margin-left: 10px;
+    }
+    .te873c3aa-8ab0-4046-8526-84d29fc3bd46.place-right::before {
+        border-right: 8px solid transparent;
+    }
+    .te873c3aa-8ab0-4046-8526-84d29fc3bd46.place-right::after {
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        left: -6px;
+        top: 50%;
+        margin-top: -4px;
+        border-right-color: #222;
+        border-right-style: solid;
+        border-right-width: 6px;
+    }
+  
+    </style>
+    <div
+      class="input_check"
+    >
+      <input
+        max="10"
+        min="0"
+        step="1"
+        type="range"
+        value="5"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;

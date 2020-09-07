@@ -1,0 +1,349 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders TrackList correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="music_list_container"
+  >
+    <div
+      class="container"
+    >
+      <div
+        class="track_list"
+      >
+        <button
+          class="big_button big_button_undefined"
+        >
+          <svg
+            class="play_svg"
+          >
+            <path
+              d="M6 11A5 5 0 1 0 6 1a5 5 0 0 0 0 10zm0 1A6 6 0 1 1 6 0a6 6 0 0 1 0 12zM4.937 4.017a.125.125 0 0 0-.187.108v3.75c0 .096.104.156.187.108l3.25-1.875a.125.125 0 0 0 0-.216l-3.25-1.875z"
+            />
+          </svg>
+          Play
+        </button>
+        <div
+          class="track_list__title"
+        >
+          <h3>
+            #
+          </h3>
+          <div
+            class="track_text__item"
+          >
+            <p
+              class="track_text"
+            >
+              TRACK
+            </p>
+            <p>
+              L.
+            </p>
+          </div>
+        </div>
+        <div
+          class="track_item"
+        >
+          <button
+            class="circle_button circle_button_black"
+          >
+            <svg
+              class="svg_stop svg_stop_circle_button"
+              viewBox="0 0 12 12"
+            >
+              <path
+                d="M2.5.5v11l9-5.5z"
+              />
+            </svg>
+          </button>
+          <div
+            class="date_item"
+          >
+            <a
+              href="/Track1"
+            >
+              <p>
+                Track1
+              </p>
+            </a>
+            <p>
+              6:13
+            </p>
+          </div>
+        </div>
+        <div
+          class="track_item"
+        >
+          <button
+            class="circle_button circle_button_black"
+          >
+            <svg
+              class="svg_stop svg_stop_circle_button"
+              viewBox="0 0 12 12"
+            >
+              <path
+                d="M2.5.5v11l9-5.5z"
+              />
+            </svg>
+          </button>
+          <div
+            class="date_item"
+          >
+            <a
+              href="/Track2"
+            >
+              <p>
+                Track2
+              </p>
+            </a>
+            <p>
+              7:06
+            </p>
+          </div>
+        </div>
+        <div
+          class="track_item"
+        >
+          <button
+            class="circle_button circle_button_black"
+          >
+            <svg
+              class="svg_stop svg_stop_circle_button"
+              viewBox="0 0 12 12"
+            >
+              <path
+                d="M2.5.5v11l9-5.5z"
+              />
+            </svg>
+          </button>
+          <div
+            class="date_item"
+          >
+            <a
+              href="/Track3"
+            >
+              <p>
+                Track3
+              </p>
+            </a>
+            <p>
+              5:44
+            </p>
+          </div>
+        </div>
+        <div
+          class="track_item"
+        >
+          <button
+            class="circle_button circle_button_black"
+          >
+            <svg
+              class="svg_stop svg_stop_circle_button"
+              viewBox="0 0 12 12"
+            >
+              <path
+                d="M2.5.5v11l9-5.5z"
+              />
+            </svg>
+          </button>
+          <div
+            class="date_item"
+          >
+            <a
+              href="/Track4"
+            >
+              <p>
+                Track4
+              </p>
+            </a>
+            <p>
+              5:03
+            </p>
+          </div>
+        </div>
+        <div
+          class="track_item"
+        >
+          <button
+            class="circle_button circle_button_black"
+          >
+            <svg
+              class="svg_stop svg_stop_circle_button"
+              viewBox="0 0 12 12"
+            >
+              <path
+                d="M2.5.5v11l9-5.5z"
+              />
+            </svg>
+          </button>
+          <div
+            class="date_item"
+          >
+            <a
+              href="/Track5"
+            >
+              <p>
+                Track5
+              </p>
+            </a>
+            <p>
+              5:54
+            </p>
+          </div>
+        </div>
+        <div
+          class="track_item"
+        >
+          <button
+            class="circle_button circle_button_black"
+          >
+            <svg
+              class="svg_stop svg_stop_circle_button"
+              viewBox="0 0 12 12"
+            >
+              <path
+                d="M2.5.5v11l9-5.5z"
+              />
+            </svg>
+          </button>
+          <div
+            class="date_item"
+          >
+            <a
+              href="/Track6"
+            >
+              <p>
+                Track6
+              </p>
+            </a>
+            <p>
+              4:40
+            </p>
+          </div>
+        </div>
+        <div
+          class="track_item"
+        >
+          <button
+            class="circle_button circle_button_black"
+          >
+            <svg
+              class="svg_stop svg_stop_circle_button"
+              viewBox="0 0 12 12"
+            >
+              <path
+                d="M2.5.5v11l9-5.5z"
+              />
+            </svg>
+          </button>
+          <div
+            class="date_item"
+          >
+            <a
+              href="/Track7"
+            >
+              <p>
+                Track7
+              </p>
+            </a>
+            <p>
+              7:01
+            </p>
+          </div>
+        </div>
+        <div
+          class="track_item"
+        >
+          <button
+            class="circle_button circle_button_black"
+          >
+            <svg
+              class="svg_stop svg_stop_circle_button"
+              viewBox="0 0 12 12"
+            >
+              <path
+                d="M2.5.5v11l9-5.5z"
+              />
+            </svg>
+          </button>
+          <div
+            class="date_item"
+          >
+            <a
+              href="/Track8"
+            >
+              <p>
+                Track8
+              </p>
+            </a>
+            <p>
+              5:25
+            </p>
+          </div>
+        </div>
+        <div
+          class="track_item"
+        >
+          <button
+            class="circle_button circle_button_black"
+          >
+            <svg
+              class="svg_stop svg_stop_circle_button"
+              viewBox="0 0 12 12"
+            >
+              <path
+                d="M2.5.5v11l9-5.5z"
+              />
+            </svg>
+          </button>
+          <div
+            class="date_item"
+          >
+            <a
+              href="/Track9"
+            >
+              <p>
+                Track9
+              </p>
+            </a>
+            <p>
+              6:29
+            </p>
+          </div>
+        </div>
+        <div
+          class="track_item"
+        >
+          <button
+            class="circle_button circle_button_black"
+          >
+            <svg
+              class="svg_stop svg_stop_circle_button"
+              viewBox="0 0 12 12"
+            >
+              <path
+                d="M2.5.5v11l9-5.5z"
+              />
+            </svg>
+          </button>
+          <div
+            class="date_item"
+          >
+            <a
+              href="/Track10"
+            >
+              <p>
+                Track10
+              </p>
+            </a>
+            <p>
+              8:47
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

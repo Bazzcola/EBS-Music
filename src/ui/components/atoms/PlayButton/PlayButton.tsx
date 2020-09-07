@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect, useCallback } from 'react';
 import { AudioContext } from 'ui/context/audioContext';
 import './PlayButton.scss';
 
@@ -6,7 +6,7 @@ export const PlayButton = () => {
   const [active, setActive] = useState<boolean>(true);
   const { playing, audioFiles } = useContext(AudioContext);
   const { setPlaying } = useContext(AudioContext);
-  const changes = () => {
+  const changes = useCallback(() => {
     if (audioFiles) {
       setActive(!active);
     } else {
@@ -14,12 +14,11 @@ export const PlayButton = () => {
     }
     if (active) {
       setPlaying(true);
-      console.log('play');
     } else {
       setPlaying(false);
-      console.log('pause');
     }
-  };
+  }, [active, audioFiles, setPlaying]);
+
   useEffect(() => {
     if (playing) {
       setActive(false);
@@ -27,6 +26,7 @@ export const PlayButton = () => {
       setActive(true);
     }
   }, [playing]);
+
   return (
     <button onClick={changes} className="play_button">
       {active ? (

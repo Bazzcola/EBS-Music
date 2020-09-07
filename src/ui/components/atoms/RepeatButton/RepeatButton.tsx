@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useCallback } from 'react';
 import ReactTooltip from 'react-tooltip';
 import { AudioContext } from 'ui/context/audioContext';
 import './RepeatButton.scss';
@@ -10,7 +10,7 @@ export const RepeatButton = (props: ButtonProps) => {
   const { repeatOne, repeatAll, setRepeatAll, setRepeatOne } = useContext(
     AudioContext
   );
-  const changes = () => {
+  const changes = useCallback(() => {
     setActive((active) => active + 1);
     if (active === 1) {
       setRepeatAll(true);
@@ -24,7 +24,7 @@ export const RepeatButton = (props: ButtonProps) => {
     } else {
       setRepeatOne(false);
     }
-  };
+  }, [active, setRepeatAll, setRepeatOne]);
 
   useEffect(() => {
     if (active > 2) {
@@ -33,11 +33,9 @@ export const RepeatButton = (props: ButtonProps) => {
     }
     if (active === 1) {
       setRepeatAll(true);
-      console.log('повторять весь лист');
     }
     if (active === 2) {
       setRepeatOne(true);
-      console.log('повторять песню');
     }
     // eslint-disable-next-line
   }, [active, repeatAll, repeatOne]);

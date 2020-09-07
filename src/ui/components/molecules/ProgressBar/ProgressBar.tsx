@@ -1,4 +1,10 @@
-import React, { useRef, useContext, useEffect, useState } from 'react';
+import React, {
+  useRef,
+  useContext,
+  useEffect,
+  useState,
+  useCallback
+} from 'react';
 import { AudioContext, Tracks, song } from 'ui/context/audioContext';
 import ReactTooltip from 'react-tooltip';
 import 'ui/components/molecules/ProgressBar/ProgressBar.scss';
@@ -33,13 +39,14 @@ export const ProgressBar = () => {
   const cur = audio.current;
 
   useEffect(() => {
-    if(profile) {
-      (async function anyNameFunction() {
+    if (profile) {
+      (async () => {
         await cur.load();
         await cur.pause();
       })();
     }
-  },[profile])
+    // eslint-disable-next-line
+  }, [profile]);
 
   useEffect(() => {
     setFiles(Tracks.map((item: song) => item.src));
@@ -49,17 +56,19 @@ export const ProgressBar = () => {
     Tracks.filter((item: song) =>
       item.src === audioFiles ? setCurrentData(item) : false
     );
-  },[currentTimeSecond, audioFiles]);
+  }, [currentTimeSecond, audioFiles]);
 
   useEffect(() => {
     const cur = audio.current;
-    playing ? (async function anyNameFunction() {
-      await cur.play();
-    })() : (async function anyNameFunction() {
-      await cur.load();
-      await cur.pause();
-    })();
-  },[playing])
+    playing
+      ? (async () => {
+          await cur.play();
+        })()
+      : (async () => {
+          await cur.load();
+          await cur.pause();
+        })();
+  }, [playing]);
 
   useEffect(() => {
     const cur = audio.current;
@@ -88,7 +97,6 @@ export const ProgressBar = () => {
 
   const Next = async () => {
     if (currentTimeSecond > 10 && currentTimeSecond === durationTime) {
-      console.log('закончилась песня');
       if (repeatAll && shuffle === false) {
         if (counter === files.length - 1) {
           await cur.play();
@@ -100,69 +108,78 @@ export const ProgressBar = () => {
           setAudioFiles(files[keys[counter + 1]]);
           setPrevSong(counter + 1);
         }
-      } else if(repeatAll && shuffle === true) {
-        if(random === prevSong) {
+      } else if (repeatAll && shuffle === true) {
+        if (random === prevSong) {
           await cur.play();
-          setRandom(Math.floor(Math.random() * 8))
-          setCounter(random)
-          setAudioFiles(files[keys[random + 1]])
+          setRandom(Math.floor(Math.random() * 8));
+          setCounter(random);
+          setAudioFiles(files[keys[random + 1]]);
         } else {
           await cur.play();
-          setRandom(Math.floor(Math.random() * 9))
-          setCounter(random)
-          setAudioFiles(files[keys[random]])
+          setRandom(Math.floor(Math.random() * 9));
+          setCounter(random);
+          setAudioFiles(files[keys[random]]);
           setPrevSong(random);
         }
-        
       } else {
         await cur.load();
         await cur.pause();
         setPlaying(false);
-        console.log(playing + ' ошибка')
       }
-      
     }
   };
 
-  const calcClickedTime = (e: { pageX: number }) => {
-    const clickPositionInPage = e.pageX;
-    const bar = barDiv.current;
-    const barStart = bar.getBoundingClientRect().left + window.scrollX;
-    const barWidth = bar.offsetWidth;
-    const clickPositionInBar = clickPositionInPage - barStart;
-    const timePerPixel = durationTime / barWidth;
-    const result = timePerPixel * clickPositionInBar;
-    return result.toFixed();
-  };
+  const calcClickedTime = useCallback(
+    (e: { pageX: number }) => {
+      const clickPositionInPage = e.pageX;
+      const bar = barDiv.current;
+      const barStart = bar.getBoundingClientRect().left + window.scrollX;
+      const barWidth = bar.offsetWidth;
+      const clickPositionInBar = clickPositionInPage - barStart;
+      const timePerPixel = durationTime / barWidth;
+      const result = timePerPixel * clickPositionInBar;
+      return result.toFixed();
+    },
+    [durationTime]
+  );
 
-  const onTimeUpdate = (time: any) => setClickedTime(time);
+  const onTimeUpdate = useCallback((time: any) => setClickedTime(time), [
+    setClickedTime
+  ]);
 
-  const handleTimeDrag = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    e.persist();
-    onTimeUpdate(calcClickedTime(e));
-    const onMove = (eMove: { pageX: number }) =>
-      onTimeUpdate(calcClickedTime(eMove));
+  const handleTimeDrag = useCallback(
+    (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+      e.persist();
+      onTimeUpdate(calcClickedTime(e));
+      const onMove = (eMove: { pageX: number }) =>
+        onTimeUpdate(calcClickedTime(eMove));
 
-    document.addEventListener('mousemove', onMove);
-    document.addEventListener('mouseup', () => {
-      document.removeEventListener('mousemove', onMove);
-    });
-  };
+      document.addEventListener('mousemove', onMove);
+      document.addEventListener('mouseup', () => {
+        document.removeEventListener('mousemove', onMove);
+      });
+    },
+    // eslint-disable-next-line
+    [calcClickedTime]
+  );
 
-  const barTooltipLine = (time: any) => setBarTooltip(time);
+  const barTooltipLine = useCallback((time: any) => setBarTooltip(time), []);
 
-  const getTooltipTime = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    e.persist();
-    const onMoveTooltip = (eMove: { pageX: number }) =>
-      barTooltipLine(calcClickedTime(eMove));
+  const getTooltipTime = useCallback(
+    (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+      e.persist();
+      const onMoveTooltip = (eMove: { pageX: number }) =>
+        barTooltipLine(calcClickedTime(eMove));
 
-    document.addEventListener('mousemove', onMoveTooltip);
-    document.addEventListener('mouseup', () => {
-      document.removeEventListener('mousemove', onMoveTooltip);
-    });
-  };
+      document.addEventListener('mousemove', onMoveTooltip);
+      document.addEventListener('mouseup', () => {
+        document.removeEventListener('mousemove', onMoveTooltip);
+      });
+    },
+    [barTooltipLine, calcClickedTime]
+  );
 
-  const formatTooltiptime = (secs: number) => {
+  const formatTooltiptime = useCallback((secs: number) => {
     var hr = Math.floor(secs / 3600);
     var min = Math.floor((secs - hr * 3600) / 60);
     var sec = Math.floor(secs - hr * 3600 - min * 60);
@@ -175,22 +192,22 @@ export const ProgressBar = () => {
     }
     // eslint-disable-next-line
     return min < 10 && sec < 10 ? min + ':' + '0' + sec : min + ':' + sec;
-  };
-  const formatSecondsAsTime = (secs: number) => {
+  }, []);
+  const formatSecondsAsTime = useCallback((secs: number) => {
     var hr = Math.floor(secs / 3600);
     var min = Math.floor((secs - hr * 3600) / 60);
     var sec = Math.floor(secs - hr * 3600 - min * 60);
 
     // eslint-disable-next-line
     return min < 10 && sec < 10 ? min + ':' + '0' + sec : min + ':' + sec;
-  };
-  const formatSecondsAllTime = (secs: number) => {
+  }, []);
+  const formatSecondsAllTime = useCallback((secs: number) => {
     var hr = Math.floor(secs / 3600);
     var min = Math.floor((secs - hr * 3600) / 60);
     var sec = Math.floor(secs - hr * 3600 - min * 60);
     // eslint-disable-next-line
     return min < 10 && sec < 10 ? min + ':' + '0' + sec : min + ':' + sec;
-  };
+  }, []);
 
   const curPercentage = (currentTimeSecond / durationTime) * 100;
 
@@ -207,7 +224,10 @@ export const ProgressBar = () => {
         onEnded={Next}
       ></audio>
       <div className="song_text">
-        <span className="song_group">{currentData?.title} {currentData ? '•' : ''}</span><span className="song_name">{currentData?.name}</span>
+        <span className="song_group">
+          {currentData?.title} {currentData ? '•' : ''}
+        </span>
+        <span className="song_name">{currentData?.name}</span>
       </div>
       <div className="bar">
         <span className="bar__time">

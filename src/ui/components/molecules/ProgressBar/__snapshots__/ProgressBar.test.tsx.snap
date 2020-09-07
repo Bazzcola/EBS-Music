@@ -1,0 +1,138 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders ProgressBar correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="progress_bar"
+  >
+    <audio
+      autoplay=""
+      class="audio_source"
+      id="audio"
+      preload="metadata"
+      src=""
+    />
+    <div
+      class="song_text"
+    >
+      <span
+        class="song_group"
+      >
+         
+      </span>
+      <span
+        class="song_name"
+      />
+    </div>
+    <div
+      class="bar"
+    >
+      <span
+        class="bar__time"
+      >
+        0:00
+      </span>
+      <div
+        class="bar__progress"
+        currentitem="false"
+        data-for="bar_time"
+        data-tip=""
+      >
+        <span
+          class="bar__progress__knob"
+          style="left: -2%;"
+        />
+        <div
+          class="__react_component_tooltip ta14425b5-6748-4bbf-b9db-7d54819d1daa place-top type-dark"
+          data-id="tooltip"
+          id="bar_time"
+        >
+          <style>
+            
+  	.ta14425b5-6748-4bbf-b9db-7d54819d1daa {
+	    color: #fff;
+	    background: #222;
+	    border: 1px solid transparent;
+  	}
+
+  	.ta14425b5-6748-4bbf-b9db-7d54819d1daa.place-top {
+        margin-top: -10px;
+    }
+    .ta14425b5-6748-4bbf-b9db-7d54819d1daa.place-top::before {
+        border-top: 8px solid transparent;
+    }
+    .ta14425b5-6748-4bbf-b9db-7d54819d1daa.place-top::after {
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        bottom: -6px;
+        left: 50%;
+        margin-left: -8px;
+        border-top-color: #222;
+        border-top-style: solid;
+        border-top-width: 6px;
+    }
+
+    .ta14425b5-6748-4bbf-b9db-7d54819d1daa.place-bottom {
+        margin-top: 10px;
+    }
+    .ta14425b5-6748-4bbf-b9db-7d54819d1daa.place-bottom::before {
+        border-bottom: 8px solid transparent;
+    }
+    .ta14425b5-6748-4bbf-b9db-7d54819d1daa.place-bottom::after {
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        top: -6px;
+        left: 50%;
+        margin-left: -8px;
+        border-bottom-color: #222;
+        border-bottom-style: solid;
+        border-bottom-width: 6px;
+    }
+
+    .ta14425b5-6748-4bbf-b9db-7d54819d1daa.place-left {
+        margin-left: -10px;
+    }
+    .ta14425b5-6748-4bbf-b9db-7d54819d1daa.place-left::before {
+        border-left: 8px solid transparent;
+    }
+    .ta14425b5-6748-4bbf-b9db-7d54819d1daa.place-left::after {
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        right: -6px;
+        top: 50%;
+        margin-top: -4px;
+        border-left-color: #222;
+        border-left-style: solid;
+        border-left-width: 6px;
+    }
+
+    .ta14425b5-6748-4bbf-b9db-7d54819d1daa.place-right {
+        margin-left: 10px;
+    }
+    .ta14425b5-6748-4bbf-b9db-7d54819d1daa.place-right::before {
+        border-right: 8px solid transparent;
+    }
+    .ta14425b5-6748-4bbf-b9db-7d54819d1daa.place-right::after {
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        left: -6px;
+        top: 50%;
+        margin-top: -4px;
+        border-right-color: #222;
+        border-right-style: solid;
+        border-right-width: 6px;
+    }
+  
+          </style>
+          0:00
+        </div>
+      </div>
+      <span
+        class="bar__time"
+      >
+        0:00
+      </span>
+    </div>
+  </div>
+</DocumentFragment>
+`;
